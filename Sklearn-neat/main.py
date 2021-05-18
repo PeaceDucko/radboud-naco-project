@@ -55,7 +55,7 @@ x_train_fl = x_train.reshape((x_train.shape[0], -1))
 x_test_fl = x_test.reshape((x_test.shape[0], -1))
 
 
-clf = NEATClassifier(number_of_generations=150,
+clf = NEATClassifier(number_of_generations=1,
                      fitness_threshold=0.90,
                      pop_size=150)
 
