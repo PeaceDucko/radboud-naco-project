@@ -15,67 +15,92 @@ from sklearn.preprocessing import OneHotEncoder
 from tensorflow.keras.utils import to_categorical
 import numpy as np
 import cv2
+import sys
+import logging
+from io import StringIO 
+import re
+from sklearn.model_selection import StratifiedShuffleSplit
 
+class Capturing(list):
+    def __enter__(self):
+        self._stdout = sys.stdout
+        sys.stdout = self._stringio = StringIO()
+        return self
+    def __exit__(self, *args):
+        self.extend(self._stringio.getvalue().splitlines())
+        del self._stringio    # free up some memory
+        sys.stdout = self._stdout
+        
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
-assert x_train.shape == (50000, 32, 32, 3)
-assert x_test.shape == (10000, 32, 32, 3)
-assert y_train.shape == (50000, 1)
-assert y_test.shape == (10000, 1)
 
-#Transform (50000, 32, 32, 3) to (50000, 32, 32) with grayscaling.
-# x_train = np.array([cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) for image in x_train])
-# x_test = np.array([cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) for image in x_test])
+X = np.append(x_train,x_test).reshape(60000,32,32,3)
+y = np.append(y_train,y_test).reshape(60000,1)
+
+assert X.shape == (60000, 32, 32, 3)
+assert y.shape == (60000, 1)
 
 #Preprocess the data
-x_train = x_train.astype('float32')
-x_test = x_test.astype('float32')
-x_train /= 255
-x_test /= 255
-# y_train = to_categorical(y_train, 10)
-# y_test = to_categorical(y_test, 10)
+X = X.astype('float32')
+X /= 255
 
-# one_hot_encoder = OneHotEncoder(sparse=False)
+sss = StratifiedShuffleSplit(n_splits=5, 
+                             test_size=0.02, 
+                             train_size=0.01, 
+                             random_state=0)
 
-# one_hot_encoder.fit(y_train)
-
-# y_train = one_hot_encoder.transform(y_train)
-# y_test = one_hot_encoder.transform(y_test)
-
-# def testSet(x,y,val):
-#     X_train, X_test, Y_train, Y_test = train_test_split(x, y, test_size=val, random_state=42)
-#     return X_test,Y_test
-
-# x_test,y_test = testSet(x_test,y_test, 0.001)
-# x_train,y_train = testSet(x_train,y_train, 0.001)
-
-print(x_test.shape)
-print(y_test.shape)
-
-x_train_fl = x_train.reshape((x_train.shape[0], -1))
-x_test_fl = x_test.reshape((x_test.shape[0], -1))
+for train_index, test_index in sss.split(X, y):
+    print("TRAIN:", train_index, "TEST:", test_index)
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+    
+with Capturing() as output:
+    X_train_fl = X_train.reshape((X_train.shape[0], -1))
+    X_test_fl = X_test.reshape((X_test.shape[0], -1))
 
 
-clf = NEATClassifier(number_of_generations=1,
-                     fitness_threshold=0.90,
-                     pop_size=150)
+    clf = NEATClassifier(number_of_generations=50,
+                         fitness_threshold=0.9,
+                         pop_size=15)
 
-neat_genome = clf.fit(x_train_fl, y_train.ravel())
-y_predicted = neat_genome.predict(x_test_fl)
+    neat_genome = clf.fit(X_train_fl, y_train.ravel())
+    y_pred = neat_genome.predict(X_test_fl)
+    
+print(classification_report(y_test.ravel(), y_pred.ravel()))
 
-fig = plt.figure()
-ax = plt.axes(projection='3d')
+best_fitness = np.array(re.findall(r'\bBest fitness: ([0-9]+\.[0-9]+)\b', str(output))).astype('float')
+avg_adj_fitness = np.array(re.findall(r'\bAverage adjusted fitness: ([0-9]+\.[0-9]+)\b', str(output))).astype('float')
 
-#Data for three-dimensional scattered points
-train_z_data = x_train_fl
-train_x_data = x_train_fl[:, 1]
-train_y_data = x_train_fl[:, 0]
-ax.scatter3D(train_x_data, train_y_data, train_z_data, c='Blue')
+fig,ax = plt.subplots(figsize=(15,8))
 
-test_z_data = y_predicted
-test_x_data = x_test_fl[:, 1]
-test_y_data = x_test_fl[:, 0]
-ax.scatter3D(test_x_data, test_y_data, test_z_data, c='Red')
-ax.legend(['Actual', 'Predicted'])
-plt.show()
+plt.plot(np.linspace(1,len(best_fitness),len(best_fitness)),
+         best_fitness,
+         label="Best fitness")
+plt.plot(np.linspace(1,len(avg_adj_fitness),len(avg_adj_fitness)),
+         avg_adj_fitness,
+         label="Average adjusted fitness")
 
-print(classification_report(y_test.ravel(), y_predicted.ravel()))
+plt.xlabel("Generation")
+plt.ylabel("Fitness")
+
+plt.legend()
+
+plt.xticks(np.linspace(1,len(best_fitness),len(best_fitness)))
+
+plt.savefig("figures/fitness.png")
+
+plt.plot()
+
+gen_time = np.array(re.findall(r'\bGeneration time: ([0-9]+\.[0-9]+)\b', str(output))).astype('float')
+
+fig,ax = plt.subplots(figsize=(15,8))
+
+plt.plot(np.linspace(1,len(gen_time),len(gen_time)),gen_time)
+
+plt.xlabel("Generation")
+plt.ylabel("Generation time (seconds)")
+
+plt.xticks(np.linspace(1,len(gen_time),len(gen_time)))
+
+plt.savefig("figures/generation_time.png")
+
+plt.plot()

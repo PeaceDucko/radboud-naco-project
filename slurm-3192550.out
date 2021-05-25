@@ -1,0 +1,78 @@
+2021-05-25 16:57:58.563882: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+TRAIN: [17432  5066 25917 31434  5889  7087 56127 46497 54838 13118 33782 28512
+ 38014 53028 32631 13793 49293  2457 44180 39885 40153 44035 46225 43338
+ 33202 39482  2128 54543 37306 36690 44010  8644 26694 46600 44534 49231
+ 53793 26659  2884 51151 35761 18915 32094 57723 31921   315 47947 57014
+  9803 51523 23558  7921 25500  1995 36438 29828 32793 48012 21576 40350] TEST: [32677 25499 13322 54421 37416 13956 53315  4011 32347 59734 57975 53847]
+TRAIN: [47952 57896 50782  8625 57713  3980 54866 50276  3061   266 52340 26388
+ 44081  1067  2839  9941 18845 38520 47962 12967  1116 49217  8068  2766
+  8846 11764 49442 27592 24336 46490 13274 38542 12250 42032 13748 15962
+ 40459 15218 17681 53585 45268 38518 31407 52137 29921 49630 32317 32411
+ 45431 31895 12326 11939 12721 16005 18455 18126 52302  9188 51270 55759] TEST: [35533 22018 15851 54629 16774 43213  3000 32448 10611 28107  9847 49370]
+TRAIN: [32519 26734 17164 27409 56918  5862  5960 44476 51532 26315 49076 27278
+ 23669 33760 34041 33439 15030 54739 25474 24362 48540 29865 17319 59143
+ 39234 49051 12795 40539  5485  7406 55642 37421  3923 44418 21925 41569
+   205  4986  4900 31259 31926 41884 29018  5816 56199 16808 46275 26885
+ 11802 52045  2071 58605 31531 29083 52313 27196 33062 29626 32880 28548] TEST: [33449 45708 45025 41350 59217 16987 10335 41126 43247 36736 57557 21195]
+TRAIN: [24554 49864 20830 26241  6595  8199 57299  6864 32706 56636 24663 52952
+  1399 27349 40590 39319 29312 32684 50383 47597  4505 43252 30084 16155
+  3791 14630 48162 14188 26851 55907 19969 51499 29466 39848 24664 24428
+ 16867 41132 44604   307 18953 18032 20755 17408  8385  8290 43584  1979
+ 10472 30708  6112  3510 31344  4463 28445 52644 27346  1521 46827 36583] TEST: [45303  5939 32718 56732 45242   398 20971 59291 17368 35038 50112 49505]
+TRAIN: [10077  3150 17233  5134  6627 54935 47611 29330 27961 41701 53308 52766
+ 59375 34055 31010 32948 19833 24219 12199 29999 18879 54666 27199 36601
+ 11458 38988 33379  7133 38533 28571 51955 38962 27570 34952 24382  7341
+ 40521 10524 58889   450 41359 29393  7889 23285 50918  1456 22706   919
+ 20426 28789 19028 37557 10202 56272 53032 21462 24787  4491  8575 56688] TEST: [34320 10085 31480 37141 35626 55247 58751  5043 10690 16222 31080 25133]
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       2.0
+           1       0.00      0.00      0.00       1.0
+           2       0.00      0.00      0.00       1.0
+           3       0.00      0.00      0.00       1.0
+           4       0.00      0.00      0.00       1.0
+           5       0.00      0.00      0.00       1.0
+           6       0.00      0.00      0.00       1.0
+           7       0.00      0.00      0.00       1.0
+           8       0.00      0.00      0.00       2.0
+           9       0.00      0.00      0.00       1.0
+
+    accuracy                           0.00      12.0
+   macro avg       0.00      0.00      0.00      12.0
+weighted avg       0.00      0.00      0.00      12.0
+
+
+
+###############################################################################
+Science Cluster
+Job 3192550 for user 'sram'
+Finished at: Tue May 25 17:49:30 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn47
+Cores               : 2
+State               : COMPLETED
+Submit              : 2021-05-25T16:45:59
+Start               : 2021-05-25T16:57:54
+End                 : 2021-05-25T17:49:30
+Reserved walltime   : 01:00:00
+Used walltime       : 00:51:36
+Used CPU time       : 00:51:26 (efficiency: 49.85%)
+% User (Computation): 99.81%
+% System (I/O)      :  0.19%
+Mem reserved        : 2G/core
+Max Mem used        : 1.49G (cn47)
+Max Disk Write      : 0.00  (cn47)
+Max Disk Read       : 1003.52K (cn47)
+
