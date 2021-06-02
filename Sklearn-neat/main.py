@@ -19,7 +19,17 @@ import sys
 import logging
 from io import StringIO 
 import re
+from arg_parse import *
 from sklearn.model_selection import StratifiedShuffleSplit
+
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+root.addHandler(handler)
 
 class Capturing(list):
     def __enter__(self):
@@ -44,12 +54,12 @@ X = X.astype('float32')
 X /= 255
 
 sss = StratifiedShuffleSplit(n_splits=5, 
-                             test_size=0.02, 
-                             train_size=0.01, 
+                             train_size=0.015, # 900 train 
+                             test_size=0.003, # 180 test
                              random_state=0)
 
 for train_index, test_index in sss.split(X, y):
-    print("TRAIN:", train_index, "TEST:", test_index)
+    #print("TRAIN:", train_index, "TEST:", test_index)
     X_train, X_test = X[train_index], X[test_index]
     y_train, y_test = y[train_index], y[test_index]
     
@@ -58,12 +68,14 @@ with Capturing() as output:
     X_test_fl = X_test.reshape((X_test.shape[0], -1))
 
 
-    clf = NEATClassifier(number_of_generations=50,
-                         fitness_threshold=0.9,
-                         pop_size=15)
+    clf = NEATClassifier(number_of_generations=args.generations,
+                         fitness_threshold=args.population_limit,
+                         pop_size=args.population_size)
 
     neat_genome = clf.fit(X_train_fl, y_train.ravel())
     y_pred = neat_genome.predict(X_test_fl)
+    
+    print(np.array(re.findall(r'\bGeneration ([0-9]+\.[0-9]+)\b', str(output))))
     
 print(classification_report(y_test.ravel(), y_pred.ravel()))
 

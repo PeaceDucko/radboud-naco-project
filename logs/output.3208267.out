@@ -1,0 +1,31 @@
+2021-06-01 18:57:34.751775: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+slurmstepd: error: *** JOB 3208267 ON cn48 CANCELLED AT 2021-06-01T18:59:33 DUE TO TIME LIMIT ***
+
+
+###############################################################################
+Science Cluster
+Job 3208267 for user 'sram'
+Finished at: Tue Jun  1 18:59:37 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn48
+Cores               : 2
+State               : CANCELLED,TIMEOUT
+Submit              : 2021-06-01T16:54:37
+Start               : 2021-06-01T18:57:30
+End                 : 2021-06-01T18:59:36
+Reserved walltime   : 00:02:00
+Used walltime       : 00:02:06
+Used CPU time       : 00:01:51 (efficiency: 44.06%)
+% User (Computation): 99.09%
+% System (I/O)      :  0.91%
+Mem reserved        : 2G/core
+Max Mem used        : 1.15G (cn48)
+Max Disk Write      : 0.00  (cn48)
+Max Disk Read       : 1003.52K (cn48)
+

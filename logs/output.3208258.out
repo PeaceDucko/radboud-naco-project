@@ -1,0 +1,47 @@
+2021-06-01 16:46:40.809729: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+2021-06-01 16:46:47,012 - root - INFO - --generations=1
+Traceback (most recent call last):
+  File "/home/sram/radboud-naco-project/Sklearn-neat/main.py", line 78, in <module>
+    neat_genome = clf.fit(X_train_fl, y_train.ravel())
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/neuro_evolution/_neat.py", line 383, in fit
+    return self._fit(X, y)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/neuro_evolution/_neat.py", line 167, in _fit
+    self.p_ = self._setup_neat()
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/neuro_evolution/_neat.py", line 144, in _setup_neat
+    p_ = neat.Population(self.config_)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/neat/population.py", line 47, in __init__
+    self.species.speciate(config, self.population, self.generation)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/neat/species.py", line 136, in speciate
+    gdmean = mean(itervalues(distances.distances))
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/neat/math_util.py", line 9, in mean
+    return sum(map(float, values)) / len(values)
+ZeroDivisionError: division by zero
+
+
+###############################################################################
+Science Cluster
+Job 3208258 for user 'sram'
+Finished at: Tue Jun  1 16:46:55 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn48
+Cores               : 2
+State               : FAILED
+Submit              : 2021-06-01T16:46:35
+Start               : 2021-06-01T16:46:36
+End                 : 2021-06-01T16:46:55
+Reserved walltime   : 00:02:00
+Used walltime       : 00:00:19
+Used CPU time       : 00:00:09 (efficiency: 25.73%)
+% User (Computation): 58.58%
+% System (I/O)      : 41.41%
+Mem reserved        : 2G/core
+Max Mem used        : 0.00  (cn48)
+Max Disk Write      : 0.00  (cn48)
+Max Disk Read       : 0.00  (cn48)
+
