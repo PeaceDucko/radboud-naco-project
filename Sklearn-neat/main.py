@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from neuro_evolution import NEATClassifier
-from keras.datasets import cifar10
+from tensorflow.keras.datasets import cifar10
 from sklearn.preprocessing import OneHotEncoder
 from tensorflow.keras.utils import to_categorical
 import numpy as np
