@@ -1,0 +1,382 @@
+2021-06-02 16:59:29.449344: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+              precision    recall  f1-score   support
+
+           0       0.12      0.94      0.21        18
+           1       0.18      0.33      0.23        18
+           2       0.00      0.00      0.00        18
+           3       0.00      0.00      0.00        18
+           4       0.00      0.00      0.00        18
+           5       0.00      0.00      0.00        18
+           6       0.00      0.00      0.00        18
+           7       0.00      0.00      0.00        18
+           8       0.00      0.00      0.00        18
+           9       0.00      0.00      0.00        18
+
+    accuracy                           0.13       180
+   macro avg       0.03      0.13      0.04       180
+weighted avg       0.03      0.13      0.04       180
+
+2021-06-02 17:09:26,663 - matplotlib.font_manager - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmmi10' (cmmi10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXNonUnicode' (STIXNonUni.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXGeneral' (STIXGeneral.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeThreeSym' (STIXSizThreeSymBol.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmtt10' (cmtt10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeOneSym' (STIXSizOneSymBol.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeOneSym' (STIXSizOneSymReg.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXNonUnicode' (STIXNonUniBolIta.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeFourSym' (STIXSizFourSymReg.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Display' (DejaVuSansDisplay.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeFiveSym' (STIXSizFiveSymReg.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-BoldItalic.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXNonUnicode' (STIXNonUniBol.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-Bold.ttf) normal normal 700 normal>) = 0.33499999999999996
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXGeneral' (STIXGeneralItalic.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif Display' (DejaVuSerifDisplay.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,665 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmb10' (cmb10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmsy10' (cmsy10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXGeneral' (STIXGeneralBolIta.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-BoldOblique.ttf) oblique normal 700 normal>) = 1.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmex10' (cmex10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeFourSym' (STIXSizFourSymBol.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-Oblique.ttf) oblique normal 400 normal>) = 1.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-Italic.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeTwoSym' (STIXSizTwoSymReg.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXNonUnicode' (STIXNonUniIta.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-Oblique.ttf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeThreeSym' (STIXSizThreeSymReg.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXGeneral' (STIXGeneralBol.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmss10' (cmss10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans.ttf) normal normal 400 normal>) = 0.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'STIXSizeTwoSym' (STIXSizTwoSymBol.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-BoldOblique.ttf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmr10' (cmr10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Hairline.ttf) normal normal 100 normal>) = 10.335
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Akkadian' (Akkadian_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,666 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans Quotation' (lmsansquot8-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman8-italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Nilus' (Nilus_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAMincho' (ipam.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-BlackItalic.ttf) italic normal 900 normal>) = 11.525
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Thin.ttf) normal normal 200 normal>) = 10.24
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmr10' (cmr10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FontAwesome' (fontawesome-webfont.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Prop Light' (lmmonoproplt10-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSerif' (FreeSerifItalic.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-Italic.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnDotum' (UnDotumBold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans17-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Demi' (lmromandemi10-regular.otf) normal normal 600 normal>) = 10.24
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Light' (lmmonolt10-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Slanted' (lmromanslant12-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAPMincho' (ipamp.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnYetgul' (UnYetgul.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Baekmuk Headline' (hline.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Size3' (MathJax_Size3-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans Demi Cond' (lmsansdemicond10-regular.otf) normal normal 600 condensed>) = 10.44
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'rsfs10' (rsfs10.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed-Bold.ttf) normal normal 700 condensed>) = 0.5349999999999999
+2021-06-02 17:09:26,667 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono' (lmmono9-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Cypro-Minoan' (CyproMinoan_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans Quotation' (lmsansquot8-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Atavyros' (Atavyros.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-SemiboldItalic.ttf) italic normal 600 normal>) = 11.24
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Analecta' (Analecta_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmsy10' (cmsy10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-BI.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnGungseo' (UnGungseo.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans' (VeraBI.ttf) oblique normal 700 normal>) = 2.244090909090909
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Aegean' (Aegean_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Light.ttf) normal normal 300 normal>) = 10.145
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Heavy.ttf) normal normal 800 normal>) = 10.43
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSerif' (FreeSerif.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-Bold.ttf) normal normal 700 normal>) = 0.33499999999999996
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeMono' (FreeMonoBold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman5-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Main' (MathJax_Main-Italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Size2' (MathJax_Size2-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Main' (MathJax_Main-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-Italic.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Regular.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,668 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Math' (MathJax_Math-BoldItalic.otf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Black.ttf) normal normal 900 normal>) = 10.525
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed-Italic.ttf) italic normal 400 condensed>) = 11.25
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans Demi Cond' (lmsansdemicond10-oblique.otf) oblique normal 600 condensed>) = 11.44
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_SansSerif' (MathJax_SansSerif-Bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Math' (MathJax_Math-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-ExtraLight.ttf) normal normal 200 normal>) = 0.24
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Alexander' (Alexander_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-BoldOblique.ttf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Amiri' (amiri-bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed-Oblique.ttf) oblique normal 400 condensed>) = 1.25
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Gardiner' (Gardiner_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-Oblique.ttf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'GFS Baskerville' (GFSBaskerville.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Size1' (MathJax_Size1-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeMono' (FreeMonoOblique.ttf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans' (Vera.ttf) normal normal 400 normal>) = 0.9590909090909092
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Caligraphic' (MathJax_Caligraphic-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans10-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Amiri' (amiri-slanted.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Dunhill' (lmromandunh10-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,669 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_SansSerif' (MathJax_SansSerif-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnTaza' (UnTaza.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'msam10' (msam10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Padauk' (Padauk-Regular.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnJamoSora' (UnJamoSora.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman17-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-BoldOblique.ttf) oblique normal 700 normal>) = 1.335
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmex10' (cmex10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_WinIE6' (MathJax_WinIE6-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed-Italic.ttf) italic normal 400 condensed>) = 11.25
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Dunhill' (lmromandunh10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Math TeX Gyre' (DejaVuMathTeXGyre.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman9-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-BoldOblique.ttf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnPilgi' (UnPilgi.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnJamoBatang' (UnJamoBatang.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Aegyptus' (AegyptusR_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Vector-Bold' (MathJax_Vector-Bold.otf) normal normal 500 normal>) = 10.145
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnJamoDotum' (UnJamoDotum.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'AR PL KaitiM GB' (gkai00mp.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed.ttf) normal normal 400 condensed>) = 0.25
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-Oblique.ttf) oblique normal 400 normal>) = 1.05
+2021-06-02 17:09:26,670 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-BoldItalic.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-B.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnPen' (UnPen.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans9-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnGraphic' (UnGraphic.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Amiri Quran' (amiri-quran.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu Condensed' (Ubuntu-C.ttf) normal normal 400 condensed>) = 10.25
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman7-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Caps' (lmmonocaps10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans8-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono' (lmmono8-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-HeavyItalic.ttf) italic normal 800 normal>) = 11.43
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSans' (FreeSansBold.ttf) normal normal 600 normal>) = 10.24
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman7-italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Light Cond' (lmmonoltcond10-regular.otf) normal normal 400 condensed>) = 10.25
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans Quotation' (lmsansquot8-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed-Bold.ttf) normal normal 700 condensed>) = 10.535
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Musica' (Musica_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-MI.ttf) italic normal 500 normal>) = 11.145
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed-BoldItalic.ttf) italic normal 700 condensed>) = 11.535
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAexGothic' (fonts-japanese-gothic.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Fraktur' (MathJax_Fraktur-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSans' (FreeSansBoldOblique.ttf) oblique normal 600 normal>) = 11.24
+2021-06-02 17:09:26,671 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Slanted' (lmromanslant10-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed-BoldOblique.ttf) oblique normal 700 condensed>) = 1.535
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-R.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Alfios' (Alfios_I.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Maya' (Maya_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'elusiveicons' (elusiveicons-webfont.ttf) normal normal 500 normal>) = 10.145
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed.ttf) normal normal 400 condensed>) = 0.25
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-HairlineItalic.ttf) italic normal 100 normal>) = 11.335
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-MediumItalic.ttf) italic normal 500 normal>) = 11.145
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman9-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Prop Light' (lmmonoproplt10-boldoblique.otf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Alfios' (Alfios_B.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed-Oblique.ttf) oblique normal 400 condensed>) = 1.25
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Aroania' (Aroania_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono' (lmmono12-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Amiri Quran Colored' (amiri-quran-colored.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Asea' (AseaR_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans.ttf) normal normal 400 normal>) = 0.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Serif' (VeraSeBd.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Prop Light' (lmmonoproplt10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman6-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,672 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-BoldOblique.ttf) oblique normal 700 normal>) = 1.335
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Unslanted' (lmromanunsl10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman10-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Typewriter' (MathJax_Typewriter-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'OpenSymbol' (opens___.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman8-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans10-boldoblique.otf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_AMS' (MathJax_AMS-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono' (lmmono10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Light Cond' (lmmonoltcond10-oblique.otf) oblique normal 400 condensed>) = 11.25
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Anaktoria' (Anaktoria_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Avdira' (Avdira_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnPilgi' (UnPilgiBold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman10-bolditalic.otf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAGothic' (ipag.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Demi' (lmromandemi10-oblique.otf) oblique normal 600 normal>) = 11.24
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono' (lmmono10-italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Slanted' (lmromanslant9-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Slanted' (lmromanslant17-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed-BoldItalic.ttf) italic normal 700 condensed>) = 11.535
+2021-06-02 17:09:26,673 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'AR PL KaitiM Big5' (bkai00mp.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Symbola' (Symbola_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnPilgia' (UnPilgia.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeMono' (FreeMono.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu Mono' (UbuntuMono-R.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Abydos' (AbydosR_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'eufm10' (eufm10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans9-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed-Bold.ttf) normal normal 700 condensed>) = 0.5349999999999999
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAPGothic' (ipagp.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Cretan Hieroglyphs' (Cretan_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSerif' (FreeSerifBold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-M.ttf) normal normal 500 normal>) = 10.145
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnGraphic' (UnGraphicBold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans Mono' (VeraMoBI.ttf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Padauk' (Padauk-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Aegyptus' (AegyptusB_hint.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Baekmuk Batang' (batang.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Light' (lmmonolt10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-Bold.ttf) normal normal 700 normal>) = 0.33499999999999996
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans Quotation' (lmsansquot8-boldoblique.otf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Caps' (lmmonocaps10-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-RI.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,674 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnDinaru' (UnDinaruBold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman9-italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSans' (FreeSansOblique.ttf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Size4' (MathJax_Size4-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Unidings' (Unidings_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Caligraphic' (MathJax_Caligraphic-Bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Baekmuk Gulim' (gulim.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Light' (lmmonolt10-boldoblique.otf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAexMincho' (ipaexm.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Serif' (VeraSe.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman7-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Italic.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'msbm10' (msbm10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman12-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Slanted' (lmromanslant8-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans8-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Math' (latinmodern-math.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman12-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_SansSerif' (MathJax_SansSerif-Italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnBatang' (UnBatang.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Baekmuk Dotum' (dotum.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Prop Light' (lmmonoproplt10-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'esint10' (esint10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans' (VeraIt.ttf) oblique normal 400 normal>) = 1.9590909090909092
+2021-06-02 17:09:26,675 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Main' (MathJax_Main-Bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Asea' (AseaJ_hint.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'cmmi10' (cmmi10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'stmary10' (stmary10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSansCondensed-BoldOblique.ttf) oblique normal 700 condensed>) = 1.535
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-LI.ttf) italic normal 300 normal>) = 11.145
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Vector' (MathJax_Vector-Regular.otf) normal normal 500 normal>) = 10.145
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Semibold.ttf) normal normal 600 normal>) = 10.24
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu Mono' (UbuntuMono-B.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans12-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Prop' (lmmonoprop10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed.ttf) normal normal 400 condensed>) = 10.25
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Fraktur' (MathJax_Fraktur-Bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Slanted' (lmmonoslant10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Asea' (AseaB_hint.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu Mono' (UbuntuMono-BI.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Light' (lmmonolt10-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman12-italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Asea' (AseaI_hint.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans12-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif-BoldItalic.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_WinChrome' (MathJax_WinChrome-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Padauk Book' (PadaukBook-Regular.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,676 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman10-italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Alfios' (Alfios_R.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'AR PL SungtiL GB' (gbsn00lp.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-Oblique.ttf) oblique normal 400 normal>) = 1.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Abydos' (AbydosB_hint.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans17-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerif.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-BoldItalic.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnPenheulim' (UnPenheulim.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans Mono' (VeraMoBd.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans' (VeraBd.ttf) normal normal 700 normal>) = 1.2440909090909091
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAexGothic' (ipaexg.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnBatang' (UnBatangBold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Caps' (lmromancaps10-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnDotum' (UnDotum.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Caps' (lmromancaps10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-LightItalic.ttf) italic normal 300 normal>) = 11.145
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Anatolian' (Anatolian_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans.ttf) normal normal 400 normal>) = 0.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman6-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnShinmun' (UnShinmun.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'IPAexMincho' (fonts-japanese-mincho.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman5-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,677 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnVada' (UnVada.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Script' (MathJax_Script-Regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'GFS Porson' (GFSPorson.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnJamoNovel' (UnJamoNovel.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'AR PL Mingti2L Big5' (bsmi00lp.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu' (Ubuntu-L.ttf) normal normal 300 normal>) = 10.145
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Alfios' (Alfios_J.otf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-ThinItalic.ttf) italic normal 200 normal>) = 11.24
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'wasy10' (wasy10.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Padauk Book' (PadaukBook-Bold.ttf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans' (DejaVuSans-ExtraLight.ttf) normal normal 200 normal>) = 0.24
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans Mono' (VeraMoIt.ttf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman' (lmroman8-bold.otf) normal normal 700 normal>) = 10.335
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Sans Mono' (DejaVuSansMono-Oblique.ttf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnDinaru' (UnDinaru.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Roman Slanted' (lmromanslant10-regular.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'MathJax_Math' (MathJax_Math-Italic.otf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FontAwesome' (FontAwesome.otf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed-Bold.ttf) normal normal 700 condensed>) = 10.535
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Bitstream Vera Sans Mono' (VeraMono.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Amiri' (amiri-regular.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Ubuntu Mono' (UbuntuMono-RI.ttf) italic normal 400 normal>) = 11.05
+2021-06-02 17:09:26,678 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'DejaVu Serif' (DejaVuSerifCondensed.ttf) normal normal 400 condensed>) = 10.25
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'UnDinaru' (UnDinaruLight.ttf) normal normal 300 normal>) = 10.145
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Mono Prop' (lmmonoprop10-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Latin Modern Sans' (lmsans10-oblique.otf) oblique normal 400 normal>) = 11.05
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Amiri' (amiri-boldslanted.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSerif' (FreeSerifBoldItalic.ttf) italic normal 700 normal>) = 11.335
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Assyrian' (Assyrian_hint.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeSans' (FreeSans.ttf) normal normal 400 normal>) = 10.05
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'FreeMono' (FreeMonoBoldOblique.ttf) oblique normal 700 normal>) = 11.335
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: score(<Font 'Lato' (Lato-Medium.ttf) normal normal 500 normal>) = 10.145
+2021-06-02 17:09:26,679 - matplotlib.font_manager - DEBUG - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/yvson/radboud-naco-project/env/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+/home/yvson/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/yvson/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/yvson/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+
+
+###############################################################################
+Science Cluster
+Job 3209775 for user 'yvson'
+Finished at: Wed Jun  2 17:09:28 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : yvson
+Partition           : csedu
+Nodes               : cn48
+Cores               : 2
+State               : COMPLETED
+Submit              : 2021-06-02T16:59:18
+Start               : 2021-06-02T16:59:25
+End                 : 2021-06-02T17:09:28
+Reserved walltime   : 01:00:00
+Used walltime       : 00:10:03
+Used CPU time       : 00:09:53 (efficiency: 49.21%)
+% User (Computation): 99.07%
+% System (I/O)      :  0.93%
+Mem reserved        : 2G/core
+Max Mem used        : 1.15G (cn48)
+Max Disk Write      : 0.00  (cn48)
+Max Disk Read       : 1.00M (cn48)
+

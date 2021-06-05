@@ -20,9 +20,10 @@ class Population(object):
         5. Go to 1.
     """
 
-    def __init__(self, config, initial_state=None):
+    def __init__(self, config, puissance_config, initial_state=None):
         self.reporters = ReporterSet()
         self.config = config
+        self.puissance_config = puissance_config
         stagnation = config.stagnation_type(config.stagnation_config, self.reporters)
         self.reproduction = config.reproduction_type(config.reproduction_config,
                                                      self.reporters,
@@ -41,7 +42,8 @@ class Population(object):
             # Create a population from scratch, then partition into species.
             self.population = self.reproduction.create_new(config.genome_type,
                                                            config.genome_config,
-                                                           config.pop_size)
+                                                           config.pop_size,
+                                                           self.puissance_config)
             self.species = config.species_set_type(config.species_set_config, self.reporters)
             self.generation = 0
             self.species.speciate(config, self.population, self.generation)
@@ -75,6 +77,7 @@ class Population(object):
         the genomes themselves (apart from updating the fitness member),
         or the configuration object.
         """
+        
 
         if self.config.no_fitness_termination and (n is None):
             raise RuntimeError("Cannot have no generational limit with no fitness termination")
@@ -82,7 +85,6 @@ class Population(object):
         k = 0
         while n is None or k < n:
             k += 1
-
             self.reporters.start_generation(self.generation)
 
             # Evaluate all genomes using the user-provided function.
@@ -108,7 +110,7 @@ class Population(object):
 
             # Create the next generation from the current generation.
             self.population = self.reproduction.reproduce(self.config, self.species,
-                                                          self.config.pop_size, self.generation)
+                                                          self.config.pop_size, self.generation, self.puissance_config)
 
             # Check for complete extinction.
             if not self.species.species:
@@ -119,7 +121,8 @@ class Population(object):
                 if self.config.reset_on_extinction:
                     self.population = self.reproduction.create_new(self.config.genome_type,
                                                                    self.config.genome_config,
-                                                                   self.config.pop_size)
+                                                                   self.config.pop_size,
+                                                                   self.puissance_config)
                 else:
                     raise CompleteExtinctionException()
 

@@ -42,7 +42,7 @@ class BaseNEAT(BaseEstimator, metaclass=ABCMeta):
                  weight_init_stdev, weight_max_value, weight_min_value, weight_mutate_power,
                  weight_mutate_rate, weight_replace_rate, compatibility_threshold, species_fitness_func,
                  max_stagnation, species_elitism, elitism, survival_threshold, statistic_reporter,
-                 create_checkpoints, checkpoint_frequency):
+                 create_checkpoints, checkpoint_frequency, puissance_config):
         self.number_of_generations = number_of_generations
         self.fitness_criterion = fitness_criterion
         self.fitness_threshold = fitness_threshold
@@ -96,6 +96,7 @@ class BaseNEAT(BaseEstimator, metaclass=ABCMeta):
         self.statistic_reporter = statistic_reporter
         self.create_checkpoints = create_checkpoints
         self.checkpoint_frequency = checkpoint_frequency
+        self.puissance_config = puissance_config
 
     @abstractmethod
     def _fitness_function(self, genomes, config):
@@ -141,7 +142,7 @@ class BaseNEAT(BaseEstimator, metaclass=ABCMeta):
         return _config
 
     def _setup_neat(self):
-        p_ = neat.Population(self.config_)
+        p_ = neat.Population(self.config_, self.puissance_config)
         self.stats_ = neat.StatisticsReporter()
         p_.add_reporter(self.stats_)
         if self.statistic_reporter:
@@ -250,7 +251,8 @@ class NEATClassifier(BaseNEAT, ClassifierMixin):
                  survival_threshold=0.2,
                  statistic_reporter=1,
                  create_checkpoints=0,
-                 checkpoint_frequency=20):
+                 checkpoint_frequency=20,
+                 puissance_config = None):
         super().__init__(number_of_generations=number_of_generations,
                          fitness_criterion=fitness_criterion,
                          fitness_threshold=fitness_threshold,
@@ -303,7 +305,8 @@ class NEATClassifier(BaseNEAT, ClassifierMixin):
                          survival_threshold=survival_threshold,
                          statistic_reporter=statistic_reporter,
                          create_checkpoints=create_checkpoints,
-                         checkpoint_frequency=checkpoint_frequency)
+                         checkpoint_frequency=checkpoint_frequency,
+                         puissance_config = puissance_config)
 
     def predict(self, X):
         """Predict using the NEAT classifier

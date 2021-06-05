@@ -172,19 +172,19 @@ class DefaultGenome(object):
         # Fitness results.
         self.fitness = None
 
-    def configure_new(self, config):
+    def configure_new(self, config, puissance_config):
         """Configure a new genome based on the given configuration."""
-
+        self.puissance_config = puissance_config
         # Create node genes for the output pins.
         for node_key in config.output_keys:
-            self.nodes[node_key] = self.create_node(config, node_key)
+            self.nodes[node_key] = self.create_node(config, node_key, puissance_config)
 
         # Add hidden nodes if requested.
         if config.num_hidden > 0:
             for i in range(config.num_hidden):
                 node_key = config.get_new_node_key(self.nodes)
                 assert node_key not in self.nodes
-                node = self.create_node(config, node_key)
+                node = self.create_node(config, node_key, puissance_config)
                 self.nodes[node_key] = node
 
         # Add connections based on initial connectivity type.
@@ -264,7 +264,7 @@ class DefaultGenome(object):
                 # Homologous gene: combine genes from both parents.
                 self.nodes[key] = ng1.crossover(ng2)
 
-    def mutate(self, config):
+    def mutate(self, config, puissance_config):
         """ Mutates this genome. """
 
         if config.single_structural_mutation:
@@ -296,11 +296,11 @@ class DefaultGenome(object):
 
         # Mutate connection genes.
         for cg in self.connections.values():
-            cg.mutate(config)
+            cg.mutate(config, puissance_config)
 
         # Mutate node genes (bias, response, etc.).
         for ng in self.nodes.values():
-            ng.mutate(config)
+            ng.mutate(config, puissance_config)
 
     def mutate_add_node(self, config):
         if not self.connections:
@@ -311,7 +311,7 @@ class DefaultGenome(object):
         # Choose a random connection to split
         conn_to_split = choice(list(self.connections.values()))
         new_node_id = config.get_new_node_key(self.nodes)
-        ng = self.create_node(config, new_node_id)
+        ng = self.create_node(config, new_node_id, self.puissance_config)
         self.nodes[new_node_id] = ng
 
         # Disable this connection and create two new connections joining its nodes via
@@ -331,7 +331,7 @@ class DefaultGenome(object):
         assert isinstance(enabled, bool)
         key = (input_key, output_key)
         connection = config.connection_gene_type(key)
-        connection.init_attributes(config)
+        connection.init_attributes(config, self.puissance_config)
         connection.weight = weight
         connection.enabled = enabled
         self.connections[key] = connection
@@ -366,7 +366,7 @@ class DefaultGenome(object):
         if config.feed_forward and creates_cycle(list(iterkeys(self.connections)), key):
             return
 
-        cg = self.create_connection(config, in_node, out_node)
+        cg = self.create_connection(config, in_node, out_node, self.puissance_config)
         self.connections[cg.key] = cg
 
     def mutate_delete_node(self, config):
@@ -465,15 +465,15 @@ class DefaultGenome(object):
         return s
 
     @staticmethod
-    def create_node(config, node_id):
+    def create_node(config, node_id, puissance_config):
         node = config.node_gene_type(node_id)
-        node.init_attributes(config)
+        node.init_attributes(config, puissance_config)
         return node
 
     @staticmethod
-    def create_connection(config, input_id, output_id):
+    def create_connection(config, input_id, output_id, puissance_config):
         connection = config.connection_gene_type((input_id, output_id))
-        connection.init_attributes(config)
+        connection.init_attributes(config, puissance_config)
         return connection
 
     def connect_fs_neat_nohidden(self, config):
@@ -484,7 +484,7 @@ class DefaultGenome(object):
         """
         input_id = choice(config.input_keys)
         for output_id in config.output_keys:
-            connection = self.create_connection(config, input_id, output_id)
+            connection = self.create_connection(config, input_id, output_id, self.puissance_config)
             self.connections[connection.key] = connection
 
     def connect_fs_neat_hidden(self, config):
@@ -495,7 +495,7 @@ class DefaultGenome(object):
         input_id = choice(config.input_keys)
         others = [i for i in iterkeys(self.nodes) if i not in config.input_keys]
         for output_id in others:
-            connection = self.create_connection(config, input_id, output_id)
+            connection = self.create_connection(config, input_id, output_id, self.puissance_config)
             self.connections[connection.key] = connection
 
     def compute_full_connections(self, config, direct):
@@ -535,13 +535,13 @@ class DefaultGenome(object):
         (except without direct input-output unless no hidden nodes).
         """
         for input_id, output_id in self.compute_full_connections(config, False):
-            connection = self.create_connection(config, input_id, output_id)
+            connection = self.create_connection(config, input_id, output_id, self.puissance_config)
             self.connections[connection.key] = connection
 
     def connect_full_direct(self, config):
         """ Create a fully-connected genome, including direct input-output connections. """
         for input_id, output_id in self.compute_full_connections(config, True):
-            connection = self.create_connection(config, input_id, output_id)
+            connection = self.create_connection(config, input_id, output_id, self.puissance_config)
             self.connections[connection.key] = connection
 
     def connect_partial_nodirect(self, config):
@@ -553,7 +553,7 @@ class DefaultGenome(object):
         shuffle(all_connections)
         num_to_add = int(round(len(all_connections) * config.connection_fraction))
         for input_id, output_id in all_connections[:num_to_add]:
-            connection = self.create_connection(config, input_id, output_id)
+            connection = self.create_connection(config, input_id, output_id, self.puissance_config)
             self.connections[connection.key] = connection
 
     def connect_partial_direct(self, config):
@@ -566,5 +566,5 @@ class DefaultGenome(object):
         shuffle(all_connections)
         num_to_add = int(round(len(all_connections) * config.connection_fraction))
         for input_id, output_id in all_connections[:num_to_add]:
-            connection = self.create_connection(config, input_id, output_id)
+            connection = self.create_connection(config, input_id, output_id, self.puissance_config)
             self.connections[connection.key] = connection

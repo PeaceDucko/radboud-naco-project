@@ -41,17 +41,26 @@ class BaseGene(object):
             params += a.get_config_params()
         return params
 
-    def init_attributes(self, config):
+    def init_attributes(self, config, puissance_config):
+        self.psi = puissance_config.psi_max
         for a in self._gene_attributes:
             setattr(self, a.name, a.init_value(config))
 
-    def mutate(self, config):
+    def mutate(self, config, puissance_config):
+        if not hasattr(self, 'psi'):
+            self.psi = puissance_config.psi_max
+        
+        if self.psi != puissance_config.psi_max:
+            print("PSI HAS CHANGED: " + str(self.psi))
+        
+#         print(str(self.psi) + "mutate")
         for a in self._gene_attributes:
             v = getattr(self, a.name)
             setattr(self, a.name, a.mutate_value(v, config))
 
     def copy(self):
         new_gene = self.__class__(self.key)
+        new_gene.psi = self.psi
         for a in self._gene_attributes:
             setattr(new_gene, a.name, getattr(self, a.name))
 
