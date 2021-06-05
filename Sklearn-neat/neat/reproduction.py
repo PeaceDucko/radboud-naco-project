@@ -137,7 +137,9 @@ class DefaultReproduction(DefaultClassConfig):
         min_species_size = max(min_species_size,self.reproduction_config.elitism)
         spawn_amounts = self.compute_spawn(adjusted_fitnesses, previous_sizes,
                                            pop_size, min_species_size)
-
+        print("Spawns: \n")
+        print(spawn_amounts)
+        
         new_population = {}
         species.species = {}
         for spawn, s in zip(spawn_amounts, remaining_species):
@@ -181,7 +183,7 @@ class DefaultReproduction(DefaultClassConfig):
                 # genetically identical clone of the parent (but with a different ID).
                 gid = next(self.genome_indexer)
                 child = config.genome_type(gid)
-                child.configure_crossover(parent1, parent2, config.genome_config)
+                child.configure_crossover(parent1, parent2, config.genome_config, puissance_config)
                 child.mutate(config.genome_config, puissance_config)
                 new_population[gid] = child
                 self.ancestors[gid] = (parent1_id, parent2_id)

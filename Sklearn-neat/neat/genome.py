@@ -231,8 +231,9 @@ class DefaultGenome(object):
                         sep='\n', file=sys.stderr);
                 self.connect_partial_nodirect(config)
 
-    def configure_crossover(self, genome1, genome2, config):
+    def configure_crossover(self, genome1, genome2, config, puissance_config):
         """ Configure a new genome by crossover from two parent genomes. """
+        self.puissance_config = puissance_config
         assert isinstance(genome1.fitness, (int, float))
         assert isinstance(genome2.fitness, (int, float))
         if genome1.fitness > genome2.fitness:
@@ -293,14 +294,25 @@ class DefaultGenome(object):
 
             if random() < config.conn_delete_prob:
                 self.mutate_delete_connection()
+        
+        
+        if random() < puissance_config.p_rdm_mutate:
+            # Mutate connection genes.
+            for cg in self.connections.values():
+                cg.mutate(config, puissance_config)
 
-        # Mutate connection genes.
-        for cg in self.connections.values():
-            cg.mutate(config, puissance_config)
+            # Mutate node genes (bias, response, etc.).
+            for ng in self.nodes.values():
+                ng.mutate(config, puissance_config)
+        else:
+            # Mutate connection genes.
+            for cg in self.connections.values():
+                cg.mutate_puissance(config, puissance_config)
 
-        # Mutate node genes (bias, response, etc.).
-        for ng in self.nodes.values():
-            ng.mutate(config, puissance_config)
+            # Mutate node genes (bias, response, etc.).
+            for ng in self.nodes.values():
+                ng.mutate_puissance(config, puissance_config)
+            
 
     def mutate_add_node(self, config):
         if not self.connections:

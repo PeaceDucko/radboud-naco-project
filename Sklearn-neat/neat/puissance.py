@@ -5,7 +5,7 @@ class Puissance:
     previous_generation_fitness = 0
     parentChildDict = {}
 
-    
+    # Mup, Much, psi_max, Sigma and Lambda possibly psi_r (look for optimizations)
     def __init__(self, psi_max = 50, p_re_eval = 0.3, p_rdm_mutate=0.3, sigma_min = 0.01, _lambda = 0.6):
         self.psi_max = psi_max
         

@@ -62,7 +62,24 @@ class FloatAttribute(BaseAttribute):
                                                                             self.init_type_name),
                                                                     self.init_type_name))
 
-    def mutate_value(self, value, config):
+    def mutate_value(self, value, config, psi, puissance_config):
+        # mutate_rate is usually no lower than replace_rate, and frequently higher -
+        # so put first for efficiency
+        mutate_rate = getattr(config, self.mutate_rate_name)
+
+        r = random()
+        if r < mutate_rate:
+            mutate_power = getattr(config, self.mutate_power_name)
+            return self.clamp(value + gauss(0.0, mutate_power), config)
+
+        replace_rate = getattr(config, self.replace_rate_name)
+
+        if r < replace_rate + mutate_rate:
+            return self.init_value(config)
+
+        return value
+    
+    def mutate_value_puissance(self, value, config, psi, puissance_config):
         # mutate_rate is usually no lower than replace_rate, and frequently higher -
         # so put first for efficiency
         mutate_rate = getattr(config, self.mutate_rate_name)
@@ -103,7 +120,7 @@ class BoolAttribute(BaseAttribute):
         raise RuntimeError("Unknown default value {!r} for {!s}".format(default,
                                                                         self.name))
 
-    def mutate_value(self, value, config):
+    def mutate_value(self, value, config, psi, puissance_config):
         mutate_rate = getattr(config, self.mutate_rate_name)
 
         if value:
@@ -122,6 +139,25 @@ class BoolAttribute(BaseAttribute):
 
         return value
 
+    def mutate_value_puissance(self, value, config, psi, puissance_config):
+        mutate_rate = getattr(config, self.mutate_rate_name)
+
+        if value:
+            mutate_rate += getattr(config, self.rate_to_false_add_name)
+        else:
+            mutate_rate += getattr(config, self.rate_to_true_add_name)
+
+        if mutate_rate > 0:
+            r = random()
+            if r < mutate_rate:
+                # NOTE: we choose a random value here so that the mutation rate has the
+                # same exact meaning as the rates given for the string and bool
+                # attributes (the mutation operation *may* change the value but is not
+                # guaranteed to do so).
+                return random() < 0.5
+
+        return value
+    
     def validate(self, config): # pragma: no cover
         pass
 
@@ -144,7 +180,18 @@ class StringAttribute(BaseAttribute):
 
         return default
 
-    def mutate_value(self, value, config):
+    def mutate_value(self, value, config, psi, puissance_config):
+        mutate_rate = getattr(config, self.mutate_rate_name)
+
+        if mutate_rate > 0:
+            r = random()
+            if r < mutate_rate:
+                options = getattr(config, self.options_name)
+                return choice(options)
+
+        return value
+    
+    def mutate_value_puissance(self, value, config, psi, puissance_config):
         mutate_rate = getattr(config, self.mutate_rate_name)
 
         if mutate_rate > 0:
