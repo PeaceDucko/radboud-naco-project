@@ -70,7 +70,7 @@ class FloatAttribute(BaseAttribute):
         r = random()
         if r < mutate_rate:
             mutate_power = getattr(config, self.mutate_power_name)
-            return self.clamp(value + gauss(0.0, mutate_power), config)
+            return self.clamp(value + gauss(0.0, (mutate_power * puissance_config.sigma)), config)
 
         replace_rate = getattr(config, self.replace_rate_name)
 
@@ -83,19 +83,10 @@ class FloatAttribute(BaseAttribute):
         # mutate_rate is usually no lower than replace_rate, and frequently higher -
         # so put first for efficiency
         mutate_rate = getattr(config, self.mutate_rate_name)
-
-        r = random()
-        if r < mutate_rate:
-            mutate_power = getattr(config, self.mutate_power_name)
-            return self.clamp(value + gauss(0.0, mutate_power), config)
-
-        replace_rate = getattr(config, self.replace_rate_name)
-
-        if r < replace_rate + mutate_rate:
-            return self.init_value(config)
-
-        return value
-
+        mutate_power = getattr(config, self.mutate_power_name)
+        
+        return self.clamp(value + gauss(0.0, (mutate_power * puissance_config.sigma)), config)
+      
     def validate(self, config): # pragma: no cover
         pass
 

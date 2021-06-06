@@ -14,6 +14,7 @@ class BaseGene(object):
     """
     def __init__(self, key):
         self.key = key
+                    
 
     def __str__(self):
         attrib = ['key'] + [a.name for a in self._gene_attributes]
@@ -69,7 +70,11 @@ class BaseGene(object):
         for a in self._gene_attributes:
             v = getattr(self, a.name)
             setattr(self, a.name, a.mutate_value_puissance(v, config, self.psi, puissance_config ))
-            
+    
+    def psi_init(self, puissance_config):
+         if not hasattr(self, 'psi'):
+            self.psi = puissance_config.psi_max
+    
     def copy(self):
         new_gene = self.__class__(self.key)
         new_gene.psi = self.psi

@@ -13,6 +13,8 @@ from neat.config import ConfigParameter, write_pretty_params
 from neat.genes import DefaultConnectionGene, DefaultNodeGene
 from neat.graphs import creates_cycle
 from neat.six_util import iteritems, iterkeys
+import math
+import numpy as np
 
 
 class DefaultGenomeConfig(object):
@@ -306,13 +308,25 @@ class DefaultGenome(object):
                 ng.mutate(config, puissance_config)
         else:
             # Mutate connection genes.
-            for cg in self.connections.values():
-                cg.mutate_puissance(config, puissance_config)
-
-            # Mutate node genes (bias, response, etc.).
-            for ng in self.nodes.values():
-                ng.mutate_puissance(config, puissance_config)
+            all_weights = [*self.connections.values(), *self.nodes.values()]
             
+            for i in all_weights:
+                i.psi_init(puissance_config)
+                
+                
+#             np.set_printoptions(threshold=np.inf)
+
+#             dtype = [('psi', float), ('weight', np.object_)]
+            all_weights = np.array(all_weights)
+            all_psi = np.array(list(map(lambda x: x.psi, all_weights)))
+#             print(all_weights)
+            
+            percentage = math.ceil(len(all_weights) * 0.25)
+            
+            top_psi_ix = np.argsort(all_psi)[:percentage]
+                                   
+            for i in top_psi_ix:
+                all_weights[i].mutate_puissance(config, puissance_config)           
 
     def mutate_add_node(self, config):
         if not self.connections:

@@ -98,6 +98,7 @@ class DefaultReproduction(DefaultClassConfig):
         all_fitnesses = []
         remaining_species = []
         for stag_sid, stag_s, stagnant in self.stagnation.update(species, generation):
+#             print(stag_sid, stag_s, stagnant)
             if stagnant:
                 self.reporters.species_stagnant(stag_sid, stag_s)
             else:

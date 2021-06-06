@@ -57,6 +57,14 @@ class Population(object):
 
     def remove_reporter(self, reporter):
         self.reporters.remove(reporter)
+    
+    #Update sigma with 1.05 so that it slowly can build up more mutate power instead of going to fast with value 2 as in the paper.
+    def update_sigma(self):
+        is_improved = any(map(lambda x: self.generation  == x.last_improved, self.species.species.values()))
+        if is_improved:
+            self.puissance_config.sigma = self.puissance_config.sigma_min
+        else:
+            self.puissance_config.sigma = self.puissance_config.sigma * 1.05
 
     def run(self, fitness_function, n=None):
         """
@@ -128,7 +136,11 @@ class Population(object):
 
             # Divide the new population into species.
             self.species.speciate(self.config, self.population, self.generation)
-
+            
+            self.update_sigma()
+            
+#             print(self.puissance_config.sigma)
+            
             self.reporters.end_generation(self.config, self.population, self.species)
 
             self.generation += 1

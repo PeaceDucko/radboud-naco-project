@@ -6,7 +6,8 @@ class Puissance:
     parentChildDict = {}
 
     # Mup, Much, psi_max, Sigma and Lambda possibly psi_r (look for optimizations)
-    def __init__(self, psi_max = 50, p_re_eval = 0.3, p_rdm_mutate=0.3, sigma_min = 0.01, _lambda = 0.6):
+    # Sigma is init 1. In paper chapter 4 it's 0.01, but we use it as a scalar for a gaussian.
+    def __init__(self, psi_max = 50, p_re_eval = 0.3, p_rdm_mutate=0.3, sigma_min = 1.00, _lambda = 0.6):
         self.psi_max = psi_max
         
         self.p_re_eval = p_re_eval
