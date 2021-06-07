@@ -267,6 +267,55 @@ class DefaultGenome(object):
                 # Homologous gene: combine genes from both parents.
                 self.nodes[key] = ng1.crossover(ng2)
 
+                
+    def delta_psi(self, fitness_map, ancestors, gid):
+        delta_ch = 0
+        delta_p = 0
+        delta_p1 = 0
+        delta_p2 = 0
+        
+        if gid in ancestors and len(ancestors[gid]) == 2: 
+#             print(ancestors[gid])
+            parent1, parent2 = ancestors[gid]
+
+            delta_ch = fitness_map[gid] - np.mean([fitness_map[parent1], fitness_map[parent2]])
+            if parent1 in ancestors and len(ancestors[parent1]) == 2:
+#                 print(ancestors[parent1])
+                gp11, gp12 = ancestors[parent1]
+  
+                delta_p1 = fitness_map[parent1] - np.mean([fitness_map[gp11], fitness_map[gp12]])
+            if parent2 in ancestors and len(ancestors[parent2]) == 2:
+#                 print(ancestors[parent2])
+                gp21, gp22 = ancestors[parent2]
+
+                delta_p2 = fitness_map[parent2] - np.mean([fitness_map[gp21], fitness_map[gp22]])
+            delta_p = np.mean([delta_p1, delta_p2])
+            
+        return (delta_p, delta_ch)
+        
+    def puissance_decay(self, puissance_config, gene):
+        gene.psi = gene.psi - np.exp(-puissance_config._lambda)
+        
+    def puissance_replenish(self, puissance_config, fitness_map, ancestors, gene):
+        mu_p, mu_ch = self.delta_psi(fitness_map, ancestors, gene.key)      
+        psi_r = mu_p * mu_ch
+        psi_c = mu_ch * (gene.psi / puissance_config.psi_max)
+        
+        delta_psi = psi_r - psi_c
+        
+        if (gene.psi + delta_psi) > puissance_config.psi_max:
+            gene.psi = puissance_config.psi_max
+        else:
+            gene.psi = gene.psi + delta_psi
+    
+    def consume_replenish_puissance(self, puissance_config, fitness_map, ancestors):  
+        all_genes = [*self.connections.values(), *self.nodes.values()]
+        for ag in all_genes:
+            if ag.last_updated_in_generation != puissance_config.current_generation:
+                self.puissance_decay(puissance_config, ag)
+            else:
+                self.puissance_replenish(puissance_config, fitness_map, ancestors, ag)
+                
     def mutate(self, config, puissance_config):
         """ Mutates this genome. """
 
@@ -319,7 +368,7 @@ class DefaultGenome(object):
 #             dtype = [('psi', float), ('weight', np.object_)]
             all_weights = np.array(all_weights)
             all_psi = np.array(list(map(lambda x: x.psi, all_weights)))
-#             print(all_weights)
+#             print(all_psi)
             
             percentage = math.ceil(len(all_weights) * 0.25)
             

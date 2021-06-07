@@ -10,6 +10,8 @@ class Puissance:
     def __init__(self, psi_max = 50, p_re_eval = 0.3, p_rdm_mutate=0.3, sigma_min = 1.00, _lambda = 0.6):
         self.psi_max = psi_max
         
+        self.current_generation = 0
+        
         self.p_re_eval = p_re_eval
         self.p_rdm_mutate = p_rdm_mutate
 
@@ -18,11 +20,11 @@ class Puissance:
 
         self._lambda = _lambda
 
-    def chooseWeight(psi):
-        arr = []
-        for i in psi:
-            arr = np.append(arr, np.repeat(i['name'], i['psi_value']))
-        return random.choice(arr)
+#     def chooseWeight(psi):
+#         arr = []
+#         for i in psi:
+#             arr = np.append(arr, np.repeat(i['name'], i['psi_value']))
+#         return random.choice(arr)
     
 
     # If the mutations result in an ANN exhibiting better performance, the puissances of the weights that were mutated are replenished; else,
@@ -36,16 +38,16 @@ class Puissance:
         psic = much * (self.psin / self.psimax)
         delta_psi = psir - psic
 
-    def run(self):
-        randomNumber = random.random(0,1)
-        if random.random(0,1) > self.p_rdm_mutate:
-            return
-        else:
-            challanger = mutate_puissance_Weights()    
+#     def run(self):
+#         randomNumber = random.random(0,1)
+#         if random.random(0,1) > self.p_rdm_mutate:
+#             return
+#         else:
+#             challanger = mutate_puissance_Weights()    
     
-    def get_dict(self):
-        return self.parentChildDict
+#     def get_dict(self):
+#         return self.parentChildDict
       
-    # setter method
-    def set_dict(self, key, value):
-        self.parentChildDict[key] = value
+#     # setter method
+#     def set_dict(self, key, value):
+#         self.parentChildDict[key] = value

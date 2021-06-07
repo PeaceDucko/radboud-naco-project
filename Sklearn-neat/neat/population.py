@@ -4,6 +4,7 @@ from __future__ import print_function
 from neat.reporting import ReporterSet
 from neat.math_util import mean
 from neat.six_util import iteritems, itervalues
+import numpy as np
 
 
 class CompleteExtinctionException(Exception):
@@ -21,6 +22,7 @@ class Population(object):
     """
 
     def __init__(self, config, puissance_config, initial_state=None):
+        self.fitness_map = {}
         self.reporters = ReporterSet()
         self.config = config
         self.puissance_config = puissance_config
@@ -60,12 +62,26 @@ class Population(object):
     
     #Update sigma with 1.05 so that it slowly can build up more mutate power instead of going to fast with value 2 as in the paper.
     def update_sigma(self):
-        is_improved = any(map(lambda x: self.generation  == x.last_improved, self.species.species.values()))
+        is_improved = any(map(lambda x: 
+                              self.generation == x.last_improved and not 
+                              x.last_improved == x.created, 
+                              self.species.species.values()))
         if is_improved:
             self.puissance_config.sigma = self.puissance_config.sigma_min
         else:
             self.puissance_config.sigma = self.puissance_config.sigma * 1.05
 
+    def update_puissance(self):
+        for g in self.population.values():
+
+            g.consume_replenish_puissance(self.puissance_config, self.fitness_map, self.reproduction.ancestors)
+
+            all_weights = [*g.connections.values(), *g.nodes.values()]
+
+            all_weights = np.array(all_weights)
+            unique_psi = set(list(map(lambda x: x.psi, all_weights)))
+            print(unique_psi)
+            
     def run(self, fitness_function, n=None):
         """
         Runs NEAT's genetic algorithm for at most n generations.  If n
@@ -97,6 +113,15 @@ class Population(object):
 
             # Evaluate all genomes using the user-provided function.
             fitness_function(list(iteritems(self.population)), self.config)
+
+            for i, g in self.population.items():
+                print(g.fitness)
+                self.fitness_map[i] = g.fitness
+
+            if k != 1:          
+                self.update_puissance()
+            
+            self.puissance_config.current_generation = self.generation
 
             # Gather and report statistics.
             best = None
@@ -138,9 +163,7 @@ class Population(object):
             self.species.speciate(self.config, self.population, self.generation)
             
             self.update_sigma()
-            
-#             print(self.puissance_config.sigma)
-            
+
             self.reporters.end_generation(self.config, self.population, self.species)
 
             self.generation += 1
