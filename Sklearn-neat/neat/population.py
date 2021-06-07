@@ -60,21 +60,24 @@ class Population(object):
     def remove_reporter(self, reporter):
         self.reporters.remove(reporter)
     
-    #Update sigma with 1.05 so that it slowly can build up more mutate power instead of going to fast with value 2 as in the paper.
-    def update_sigma(self):
-        is_improved = any(map(lambda x: 
+    def get_is_improved(self):
+         return any(map(lambda x: 
                               self.generation == x.last_improved and not 
                               x.last_improved == x.created, 
                               self.species.species.values()))
+    
+    #Update sigma with 1.05 so that it slowly can build up more mutate power instead of going to fast with value 2 as in the paper.
+    def update_sigma(self):
+        is_improved = self.get_is_improved()
         if is_improved:
             self.puissance_config.sigma = self.puissance_config.sigma_min
         else:
             self.puissance_config.sigma = self.puissance_config.sigma * 1.05
 
-    def update_puissance(self):
+    def update_puissance(self, mu_window_size):
         for g in self.population.values():
 
-            g.consume_replenish_puissance(self.puissance_config, self.fitness_map, self.reproduction.ancestors)
+            g.consume_replenish_puissance(self.puissance_config, self.fitness_map, self.reproduction.ancestors, mu_window_size)
 
             all_weights = [*g.connections.values(), *g.nodes.values()]
 
@@ -107,6 +110,7 @@ class Population(object):
             raise RuntimeError("Cannot have no generational limit with no fitness termination")
 
         k = 0
+        mu_window_size = 1
         while n is None or k < n:
             k += 1
             self.reporters.start_generation(self.generation)
@@ -117,9 +121,13 @@ class Population(object):
             for i, g in self.population.items():
                 print(g.fitness)
                 self.fitness_map[i] = g.fitness
-
+            
+            mu_window_size += 1
+            if self.get_is_improved():
+                mu_window_size = 1
+            
             if k != 1:          
-                self.update_puissance()
+                self.update_puissance(mu_window_size)
             
             self.puissance_config.current_generation = self.generation
 
