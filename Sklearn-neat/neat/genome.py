@@ -293,45 +293,87 @@ class DefaultGenome(object):
             
 #         return (delta_p, delta_ch)
 
-    def mu_calc(self, fitness_map, ancestors, gid, window_size):
+    def mu_calc(self, fitness_map, ancestors, gid, mu_window_size):
         diff_fit_parent = {}
         frontier = [gid]
-        for k in range(window_size)
+
+        # List of average difference between ancestors of k generations ago and k+1 generations ago
+        generation_avg_delta = []
+
+        for k in range(mu_window_size+1):
             new_frontier = []
+            cur_total_delta = 0
+
+            size = len(frontier)
+
             while frontier:
                 cur = frontier.pop()
-                if cur in diff_fit_parent:
-                    continue
-                else:
-                    diff_fit_parent[cur] = self.delta_psi(fitness_map, ancestors, cur)
-            
+                if cur not in diff_fit_parent:
+                    print("diff_fit_parent[cur]")
+                    diff_fit_parent[cur], cur_parents = self.delta_psi(fitness_map, ancestors, cur)
+                    print(diff_fit_parent[cur])
+                    new_frontier.extend(cur_parents)
+                cur_total_delta += diff_fit_parent[cur]
+
+            print("cur_total_delta")
+            print(cur_total_delta)
+            generation_avg_delta.append(cur_total_delta / size if size > 0 else 0.0)
             frontier = new_frontier
-      
+        print("Generation avg deltas") # Can be commented after testing
+        print(generation_avg_delta)
+        print("Part for mu_p")
+        print(generation_avg_delta[1:])
+        print("Part for mu_ch")
+        print(generation_avg_delta[:-1])
+        mu_p = np.mean(generation_avg_delta[1:])
+        mu_ch = np.mean(generation_avg_delta[:-1])
+
+        return mu_p, mu_ch
+
+          
     def delta_psi(self, fitness_map, ancestors, gid):
         delta_ch = 0
+        parents = []
         
+        
+#         print("ancestors:")
+#         print(ancestors)
+#         print("gid")
+#         print(gid)
+#         print("ancestor gid")
+#         print(ancestors[gid])
+     
         if gid in ancestors and len(ancestors[gid]) == 2: 
 #             print(ancestors[gid])
             parent1, parent2 = ancestors[gid]
+            parents = ancestors[gid]
 
             delta_ch = fitness_map[gid] - np.mean([fitness_map[parent1], fitness_map[parent2]])
+            print("fitness_map")
+            print( fitness_map)
+            print("fitness_map gid")
+            print( fitness_map[gid])
+            print("delta")
+            print(delta_ch)
        
-        return delta_ch
+        return delta_ch, parents
         
     def puissance_decay(self, puissance_config, gene):
         gene.psi = gene.psi - np.exp(-puissance_config._lambda)
         
-    def puissance_replenish(self, puissance_config, fitness_map, ancestors, gene, window_size):
-        mu_p, mu_ch = self.delta_psi(fitness_map, ancestors, gene.key, window_size)      
+    def puissance_replenish(self, puissance_config, fitness_map, ancestors, gene, mu_window_size):
+        print("self key")
+        print(self.key)
+        mu_p, mu_ch = self.mu_calc(fitness_map, ancestors, self.key, mu_window_size)      
         psi_r = mu_p * mu_ch
         psi_c = mu_ch * (gene.psi / puissance_config.psi_max)
         
-        delta_psi = psi_r - psi_c
+        d_psi = psi_r - psi_c
         
-        if (gene.psi + delta_psi) > puissance_config.psi_max:
+        if (gene.psi + d_psi) > puissance_config.psi_max:
             gene.psi = puissance_config.psi_max
         else:
-            gene.psi = gene.psi + delta_psi
+            gene.psi = gene.psi + d_psi
     
     def consume_replenish_puissance(self, puissance_config, fitness_map, ancestors, mu_window_size):  
         all_genes = [*self.connections.values(), *self.nodes.values()]
@@ -339,7 +381,7 @@ class DefaultGenome(object):
             if ag.last_updated_in_generation != puissance_config.current_generation:
                 self.puissance_decay(puissance_config, ag)
             else:
-                self.puissance_replenish(puissance_config, fitness_map, ancestors, ag, window_size)
+                self.puissance_replenish(puissance_config, fitness_map, ancestors, ag, mu_window_size)
                 
     def mutate(self, config, puissance_config):
         """ Mutates this genome. """

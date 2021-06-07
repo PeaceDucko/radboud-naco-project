@@ -110,7 +110,7 @@ class Population(object):
             raise RuntimeError("Cannot have no generational limit with no fitness termination")
 
         k = 0
-        mu_window_size = 1
+        mu_window_size = 0
         while n is None or k < n:
             k += 1
             self.reporters.start_generation(self.generation)
@@ -121,13 +121,15 @@ class Population(object):
             for i, g in self.population.items():
                 print(g.fitness)
                 self.fitness_map[i] = g.fitness
+
+            if k != 1:          
+                self.update_puissance(mu_window_size)
             
             mu_window_size += 1
             if self.get_is_improved():
                 mu_window_size = 1
             
-            if k != 1:          
-                self.update_puissance(mu_window_size)
+            print(mu_window_size)
             
             self.puissance_config.current_generation = self.generation
 
