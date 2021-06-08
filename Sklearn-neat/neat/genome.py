@@ -309,22 +309,22 @@ class DefaultGenome(object):
             while frontier:
                 cur = frontier.pop()
                 if cur not in diff_fit_parent:
-                    print("diff_fit_parent[cur]")
+#                     print("diff_fit_parent[cur]")
                     diff_fit_parent[cur], cur_parents = self.delta_psi(fitness_map, ancestors, cur)
-                    print(diff_fit_parent[cur])
+#                     print(diff_fit_parent[cur])
                     new_frontier.extend(cur_parents)
                 cur_total_delta += diff_fit_parent[cur]
 
-            print("cur_total_delta")
-            print(cur_total_delta)
+#             print("cur_total_delta")
+#             print(cur_total_delta)
             generation_avg_delta.append(cur_total_delta / size if size > 0 else 0.0)
             frontier = new_frontier
-        print("Generation avg deltas") # Can be commented after testing
-        print(generation_avg_delta)
-        print("Part for mu_p")
-        print(generation_avg_delta[1:])
-        print("Part for mu_ch")
-        print(generation_avg_delta[:-1])
+#         print("Generation avg deltas") # Can be commented after testing
+#         print(generation_avg_delta)
+#         print("Part for mu_p")
+#         print(generation_avg_delta[1:])
+#         print("Part for mu_ch")
+#         print(generation_avg_delta[:-1])
         mu_p = np.mean(generation_avg_delta[1:])
         mu_ch = np.mean(generation_avg_delta[:-1])
 
@@ -349,22 +349,21 @@ class DefaultGenome(object):
             parents = ancestors[gid]
 
             delta_ch = fitness_map[gid] - np.mean([fitness_map[parent1], fitness_map[parent2]])
-            print("fitness_map")
-            print( fitness_map)
-            print("fitness_map gid")
-            print( fitness_map[gid])
-            print("delta")
-            print(delta_ch)
+#             print("fitness_map")
+#             print( fitness_map)
+#             print("fitness_map gid")
+#             print( fitness_map[gid])
+#             print("delta")
+#             print(delta_ch)
        
         return delta_ch, parents
         
     def puissance_decay(self, puissance_config, gene):
         gene.psi = gene.psi - np.exp(-puissance_config._lambda)
-        
-    def puissance_replenish(self, puissance_config, fitness_map, ancestors, gene, mu_window_size):
-        print("self key")
-        print(self.key)
-        mu_p, mu_ch = self.mu_calc(fitness_map, ancestors, self.key, mu_window_size)      
+    
+    def puissance_replenish(self, puissance_config, fitness_map, ancestors, gene, mu_window_size, mu_p, mu_ch):
+#         print("self key")
+#         print(self.key)
         psi_r = mu_p * mu_ch
         psi_c = mu_ch * (gene.psi / puissance_config.psi_max)
         
@@ -377,11 +376,12 @@ class DefaultGenome(object):
     
     def consume_replenish_puissance(self, puissance_config, fitness_map, ancestors, mu_window_size):  
         all_genes = [*self.connections.values(), *self.nodes.values()]
+        mu_p, mu_ch = self.mu_calc(fitness_map, ancestors, self.key, mu_window_size)      
         for ag in all_genes:
             if ag.last_updated_in_generation != puissance_config.current_generation:
                 self.puissance_decay(puissance_config, ag)
             else:
-                self.puissance_replenish(puissance_config, fitness_map, ancestors, ag, mu_window_size)
+                self.puissance_replenish(puissance_config, fitness_map, ancestors, ag, mu_window_size, mu_p, mu_ch)
                 
     def mutate(self, config, puissance_config):
         """ Mutates this genome. """

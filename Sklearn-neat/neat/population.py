@@ -83,7 +83,7 @@ class Population(object):
 
             all_weights = np.array(all_weights)
             unique_psi = set(list(map(lambda x: x.psi, all_weights)))
-            print(unique_psi)
+            print("Unique puissance values: {}".format(unique_psi))
             
     def run(self, fitness_function, n=None):
         """
@@ -119,7 +119,7 @@ class Population(object):
             fitness_function(list(iteritems(self.population)), self.config)
 
             for i, g in self.population.items():
-                print(g.fitness)
+#                 print(g.fitness)
                 self.fitness_map[i] = g.fitness
 
             if k != 1:          
@@ -129,7 +129,7 @@ class Population(object):
             if self.get_is_improved():
                 mu_window_size = 1
             
-            print(mu_window_size)
+#             print(mu_window_size)
             
             self.puissance_config.current_generation = self.generation
 

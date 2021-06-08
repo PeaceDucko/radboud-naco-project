@@ -31,12 +31,12 @@ class Puissance:
     # they are reduced.
 
     # The puissances of the other weights that remain untouched, however, decay over time.
-    def adjustPuissance(self, fitness, child, parent):
-        mup = abs(self.previous_generation_fitness - fitness)
-        much = abs()
-        psir = mup * much 
-        psic = much * (self.psin / self.psimax)
-        delta_psi = psir - psic
+#     def adjustPuissance(self, fitness, child, parent):
+#         mup = abs(self.previous_generation_fitness - fitness)
+#         much = abs()
+#         psir = mup * much 
+#         psic = much * (self.psin / self.psimax)
+#         delta_psi = psir - psic
 
 #     def run(self):
 #         randomNumber = random.random(0,1)

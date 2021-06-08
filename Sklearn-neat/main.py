@@ -1,31 +1,48 @@
-"""
-============================
-Plotting NEAT Classifier
-============================
-
-An example plot of :class:`neuro_evolution._neat.NEATClassifier`
-"""
 import sys
 import os
-sys.path.append(os.getcwd()+"/Sklearn-neat")
 
 from matplotlib import pyplot as plt
 # from sklearn.datasets import make_classification
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
-from neuro_evolution import NEATClassifier
 from tensorflow.keras.datasets import cifar10
 from sklearn.preprocessing import OneHotEncoder
 from tensorflow.keras.utils import to_categorical
 import numpy as np
 import cv2
+import math
 import sys
 import logging
 from io import StringIO 
 import re
 from arg_parse import *
 from sklearn.model_selection import StratifiedShuffleSplit
+import seaborn as sns
+import contextlib
 
+logging.getLogger('matplotlib.font_manager').disabled = True
+
+import seaborn as sns
+
+%matplotlib inline
+sns.set_style('whitegrid')
+
+fig_loc = "figures/"
+
+"""
+Settings for custom NEAT implementation
+"""
+sys.path.append(os.getcwd()+"/Sklearn-neat")
+
+import neat
+from neat import math_util
+from neat.puissance import Puissance 
+
+from neuro_evolution import NEATClassifier
+
+"""
+Custom logging
+"""
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
 
@@ -34,17 +51,10 @@ handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 root.addHandler(handler)
+"""
+End
+"""
 
-class Capturing(list):
-    def __enter__(self):
-        self._stdout = sys.stdout
-        sys.stdout = self._stringio = StringIO()
-        return self
-    def __exit__(self, *args):
-        self.extend(self._stringio.getvalue().splitlines())
-        del self._stringio    # free up some memory
-        sys.stdout = self._stdout
-        
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
 X = np.append(x_train,x_test).reshape(60000,32,32,3)
@@ -58,8 +68,8 @@ X = X.astype('float32')
 X /= 255
 
 sss = StratifiedShuffleSplit(n_splits=5, 
-                             train_size=0.015, # 900 train 
-                             test_size=0.003, # 180 test
+                             train_size=args.train_size, 
+                             test_size=args.test_size,
                              random_state=0)
 
 for train_index, test_index in sss.split(X, y):
@@ -77,91 +87,157 @@ print(y_test.shape)
     
 def find_metric_in_output(output, string):    
     result = re.findall(r"\b"+string+r" ([0-9]+\.[0-9]+)\b", str(output))
-    result = np.array(result).astype('float')
-    result = result[0]
     
+    result = np.array(result).astype('float')
+        
+    return result 
+
+def find_puissance_in_output(output):    
+    result = re.findall(r"\b(?<=Unique puissance values: {).*?(?=})\b", str(output))    
     return result 
     
 X_train_fl = X_train.reshape((X_train.shape[0], -1))
 X_test_fl = X_test.reshape((X_test.shape[0], -1))
 
-clf = NEATClassifier(number_of_generations=1,
-                     fitness_threshold=args.population_limit,
-                     pop_size=args.population_size)
+try:
+    puissance_config = Puissance()
 
-results = {}
-best_fitness = 0
-
-for i in range(args.generations):
-    logging.info("*** Running generation "+str(i)+" ***")
-    print("*** Running generation {} ***".format(str(i)))
-    with Capturing() as output:
-        neat_genome = clf.fit(X_train_fl, y_train.ravel())
-        
-    curr_fitness = find_metric_in_output(output, "Fitness:")
-    curr_popavgfit = find_metric_in_output(output, "Population's average fitness:")
-    curr_stdev = find_metric_in_output(output, "stdev:")
-        
-    print("Fitness: {}".format(curr_fitness))
-    print("Population's average fitness: {}".format(curr_popavgfit))
-    print("Standard deviation: {}".format(curr_stdev))
-
-    print("---")
-    if curr_fitness > best_fitness:
-        best_fitness = curr_fitness
-        
-    print("Best fitness: {}".format(best_fitness))
+    clf = NEATClassifier(number_of_generations=args.generations,
+                         fitness_threshold=args.fitness_limit,
+                         pop_size=args.population_size,
+                         puissance_config = puissance_config)
     
-    results[i] = {
-        "fitness":curr_fitness,
-        "pop_avg_fitness":curr_popavgfit,
-        "stdev":curr_stdev   
-    }
-
-    print("---\n")
+    logging.info("Running NEAT puissance")
+    
+except:
+    clf = NEATClassifier(number_of_generations=args.generations,
+                         fitness_threshold=args.fitness_limit,
+                         pop_size=args.population_size)
+    
+    logging.info("Running NEAT")
+    
+"""
+Training the NEAT model
+"""
+path = 'output.txt'
+with open(path, 'w') as f:
+    with contextlib.redirect_stdout(f):
+        neat_genome = clf.fit(X_train_fl, y_train.ravel())
     
 y_pred = neat_genome.predict(X_test_fl)
     
 print(classification_report(y_test.ravel(), y_pred.ravel()))
 
-fitness = [i['fitness'] for i in results.values()]
-pop_avg_fitness = [i['pop_avg_fitness'] for i in results.values()]
+"""
+Reading the output and processing results
+"""
+output = open("output.txt", "r").read()
 
-fig,ax = plt.subplots(figsize=(15,8))
+gen_time = find_metric_in_output(output, "Generation time:")
+cum_gen_time = np.array([])
 
-plt.plot(np.linspace(1,args.generations,args.generations),
-         fitness,
-         label="Fitness")
-plt.plot(np.linspace(1,args.generations,args.generations),
-         pop_avg_fitness,
-         label="Population's average fitness")
+for i in range(1,len(gen_time)+1):
+    cum_gen_time = np.append(cum_gen_time, gen_time[:i].sum())
+    
+results = {}
 
-plt.xlabel("Generation")
-plt.ylabel("Fitness")
+results['best_fitness'] = find_metric_in_output(output, "Best fitness:")
+results['avg_adj_fitness'] = find_metric_in_output(output, "Average adjusted fitness:")
+results['pop_avg_fitness'] = find_metric_in_output(output, "Population's average fitness:")
+results['gen_time'] = gen_time
+results['cum_gen_time'] = cum_gen_time
+results['stdev'] = find_metric_in_output(output, "stdev:")
+# metrics['puissance'] = puissance = find_puissance_in_output(output)
 
-plt.legend()
+assert len(results['best_fitness']) == \
+        len(results['avg_adj_fitness']) == \
+        len(results['pop_avg_fitness']) == \
+        len(results['gen_time']) == \
+        len(results['stdev'])
 
-plt.xticks(np.linspace(1,args.generations,args.generations))
+"""
+Plotting the results
+"""
+def plot_results(plots, xlabel, ylabel, fig_name):
+    fig,ax = plt.subplots(figsize=(15,8))
 
-plt.savefig("figures/fitness.png")
+    for i in range(0,len(plots)):
+        plt.plot(plots[i]['x'],
+                 plots[i]['y'],
+                 label = plots[i]['label'])
 
-plt.plot()
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
 
-stdev = [i['stdev'] for i in results.values()]
+    plt.legend()
 
-fig,ax = plt.subplots(figsize=(15,8))
+    plt.xticks(np.arange(0, args.generations, math.ceil(args.generations/100)))
 
-plt.plot(np.linspace(1,args.generations,args.generations),
-         stdev,
-         label="Standard deviation")
+    plt.savefig(fig_loc+fig_name)
 
-plt.xlabel("Generation")
-plt.ylabel("Standard deviation")
+    plt.plot()
+    
+    
+"""
+Fitness
+"""
+plots = {}
 
-plt.legend()
+plots[0] = {
+    "x":np.linspace(0,args.generations,args.generations),
+    "y":results['avg_adj_fitness'],
+    "label":"Average adjusted fitness"
+}
 
-plt.xticks(np.linspace(1,args.generations,args.generations))
+plots[1] = {
+    "x":np.linspace(0,args.generations,args.generations),
+    "y":results['pop_avg_fitness'],
+    "label":"Population's average fitness"  
+}
 
-plt.savefig("figures/stdev.png")
+plots[2] = {
+    "x":np.linspace(0,args.generations,args.generations),
+    "y":results['best_fitness'],
+    "label":"Best fitness"  
+}
 
-plt.plot()
+plot_results(plots, "Generation", "Fitness", "fitness.png")
+
+"""
+Standard deviation
+"""
+plots = {}
+
+plots[0] = {
+    "x":np.linspace(0,args.generations,args.generations),
+    "y":results['stdev'],
+    "label":"Standard deviation"
+}
+
+plot_results(plots, "Generation", "Standard deviation", "stdev.png")
+
+"""
+Generaion time
+"""
+plots = {}
+
+plots[0] = {
+    "x":np.linspace(0,args.generations,args.generations),
+    "y":results['gen_time'],
+    "label":"Generation time"
+}
+
+plot_results(plots, "Generation", "Generation time", "gen_time.png")
+
+"""
+Cumulative generaion time
+"""
+plots = {}
+
+plots[0] = {
+    "x":np.linspace(0,args.generations,args.generations),
+    "y":results['cum_gen_time'],
+    "label":"Cumulative generation time (seconds)"
+}
+
+plot_results(plots, "Generation", "Cumulative generation time (seconds)", "cum_gen_time.png")
