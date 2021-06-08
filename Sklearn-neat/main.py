@@ -29,13 +29,12 @@ sns.set_style('whitegrid')
 fig_loc = "figures/"
 
 """
-Settings for custom NEAT implementation
+Packages for custom NEAT implementation
 """
 sys.path.append(os.getcwd()+"/Sklearn-neat")
 
 import neat
 from neat import math_util
-from neat.puissance import Puissance 
 
 from neuro_evolution import NEATClassifier
 
@@ -99,6 +98,8 @@ X_train_fl = X_train.reshape((X_train.shape[0], -1))
 X_test_fl = X_test.reshape((X_test.shape[0], -1))
 
 try:
+    from neat.puissance import Puissance
+
     puissance_config = Puissance()
 
     clf = NEATClassifier(number_of_generations=args.generations,
