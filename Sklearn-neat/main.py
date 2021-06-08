@@ -24,7 +24,6 @@ logging.getLogger('matplotlib.font_manager').disabled = True
 
 import seaborn as sns
 
-%matplotlib inline
 sns.set_style('whitegrid')
 
 fig_loc = "figures/"
@@ -224,10 +223,10 @@ plots = {}
 plots[0] = {
     "x":np.linspace(0,args.generations,args.generations),
     "y":results['gen_time'],
-    "label":"Generation time"
+    "label":"Generation time (seconds)"
 }
 
-plot_results(plots, "Generation", "Generation time", "gen_time.png")
+plot_results(plots, "Generation", "Generation time (seconds)", "gen_time.png")
 
 """
 Cumulative generaion time

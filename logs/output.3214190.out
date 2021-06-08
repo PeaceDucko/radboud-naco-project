@@ -1,0 +1,59 @@
+2021-06-08 20:35:54.419810: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+(12, 32, 32, 3)
+(12, 1)
+---
+(12, 32, 32, 3)
+(12, 1)
+2021-06-08 20:36:11,026 - root - INFO - Running NEAT puissance
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00       2.0
+           1       0.00      0.00      0.00       1.0
+           2       0.00      0.00      0.00       1.0
+           3       0.00      0.00      0.00       1.0
+           4       0.00      0.00      0.00       1.0
+           5       0.00      0.00      0.00       1.0
+           6       0.00      0.00      0.00       1.0
+           7       0.00      0.00      0.00       2.0
+           8       0.00      0.00      0.00       1.0
+           9       0.00      0.00      0.00       1.0
+
+    accuracy                           0.00      12.0
+   macro avg       0.00      0.00      0.00      12.0
+weighted avg       0.00      0.00      0.00      12.0
+
+
+
+###############################################################################
+Science Cluster
+Job 3214190 for user 'sram'
+Finished at: Tue Jun  8 20:39:13 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn47
+Cores               : 2
+State               : COMPLETED
+Submit              : 2021-06-08T20:35:30
+Start               : 2021-06-08T20:35:48
+End                 : 2021-06-08T20:39:12
+Reserved walltime   : 01:00:00
+Used walltime       : 00:03:24
+Used CPU time       : 00:03:09 (efficiency: 46.41%)
+% User (Computation): 98.35%
+% System (I/O)      :  1.65%
+Mem reserved        : 2G/core
+Max Mem used        : 1.39G (cn47)
+Max Disk Write      : 0.00  (cn47)
+Max Disk Read       : 1003.52K (cn47)
+
