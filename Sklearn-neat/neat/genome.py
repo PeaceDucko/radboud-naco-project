@@ -309,22 +309,22 @@ class DefaultGenome(object):
             while frontier:
                 cur = frontier.pop()
                 if cur not in diff_fit_parent:
-                    print("diff_fit_parent[cur]")
+#                     print("diff_fit_parent[cur]")
                     diff_fit_parent[cur], cur_parents = self.delta_psi(fitness_map, ancestors, cur)
-                    print(diff_fit_parent[cur])
+#                     print(diff_fit_parent[cur])
                     new_frontier.extend(cur_parents)
                 cur_total_delta += diff_fit_parent[cur]
 
-            print("cur_total_delta")
-            print(cur_total_delta)
+#             print("cur_total_delta")
+#             print(cur_total_delta)
             generation_avg_delta.append(cur_total_delta / size if size > 0 else 0.0)
             frontier = new_frontier
-        print("Generation avg deltas") # Can be commented after testing
-        print(generation_avg_delta)
-        print("Part for mu_p")
-        print(generation_avg_delta[1:])
-        print("Part for mu_ch")
-        print(generation_avg_delta[:-1])
+#         print("Generation avg deltas") # Can be commented after testing
+#         print(generation_avg_delta)
+#         print("Part for mu_p")
+#         print(generation_avg_delta[1:])
+#         print("Part for mu_ch")
+#         print(generation_avg_delta[:-1])
         mu_p = np.mean(generation_avg_delta[1:])
         mu_ch = np.mean(generation_avg_delta[:-1])
 
