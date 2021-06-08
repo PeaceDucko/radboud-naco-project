@@ -349,22 +349,21 @@ class DefaultGenome(object):
             parents = ancestors[gid]
 
             delta_ch = fitness_map[gid] - np.mean([fitness_map[parent1], fitness_map[parent2]])
-            print("fitness_map")
-            print( fitness_map)
-            print("fitness_map gid")
-            print( fitness_map[gid])
-            print("delta")
-            print(delta_ch)
+#             print("fitness_map")
+#             print( fitness_map)
+#             print("fitness_map gid")
+#             print( fitness_map[gid])
+#             print("delta")
+#             print(delta_ch)
        
         return delta_ch, parents
         
     def puissance_decay(self, puissance_config, gene):
         gene.psi = gene.psi - np.exp(-puissance_config._lambda)
-        
-    def puissance_replenish(self, puissance_config, fitness_map, ancestors, gene, mu_window_size):
-        print("self key")
-        print(self.key)
-        mu_p, mu_ch = self.mu_calc(fitness_map, ancestors, self.key, mu_window_size)      
+    
+    def puissance_replenish(self, puissance_config, fitness_map, ancestors, gene, mu_window_size, mu_p, mu_ch):
+#         print("self key")
+#         print(self.key)
         psi_r = mu_p * mu_ch
         psi_c = mu_ch * (gene.psi / puissance_config.psi_max)
         
@@ -377,11 +376,12 @@ class DefaultGenome(object):
     
     def consume_replenish_puissance(self, puissance_config, fitness_map, ancestors, mu_window_size):  
         all_genes = [*self.connections.values(), *self.nodes.values()]
+        mu_p, mu_ch = self.mu_calc(fitness_map, ancestors, self.key, mu_window_size)      
         for ag in all_genes:
             if ag.last_updated_in_generation != puissance_config.current_generation:
                 self.puissance_decay(puissance_config, ag)
             else:
-                self.puissance_replenish(puissance_config, fitness_map, ancestors, ag, mu_window_size)
+                self.puissance_replenish(puissance_config, fitness_map, ancestors, ag, mu_window_size, mu_p, mu_ch)
                 
     def mutate(self, config, puissance_config):
         """ Mutates this genome. """
