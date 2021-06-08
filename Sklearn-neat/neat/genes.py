@@ -14,6 +14,8 @@ class BaseGene(object):
     """
     def __init__(self, key):
         self.key = key
+        self.last_updated_in_generation = -1
+                    
 
     def __str__(self):
         attrib = ['key'] + [a.name for a in self._gene_attributes]
@@ -41,17 +43,51 @@ class BaseGene(object):
             params += a.get_config_params()
         return params
 
-    def init_attributes(self, config):
+    def init_attributes(self, config, puissance_config):
+        self.psi = puissance_config.psi_max
         for a in self._gene_attributes:
             setattr(self, a.name, a.init_value(config))
 
-    def mutate(self, config):
+    def mutate(self, config, puissance_config):
+        if not hasattr(self, 'psi'):
+            self.psi = puissance_config.psi_max
+        
+#         if self.psi != puissance_config.psi_max:
+#             print("PSI HAS CHANGED: " + str(self.psi))
+                    
+        # print(str(self.psi) + "mutate")
+        has_changed  = False
         for a in self._gene_attributes:
             v = getattr(self, a.name)
-            setattr(self, a.name, a.mutate_value(v, config))
-
+            new_v = a.mutate_value(v, config, self.psi, puissance_config)
+            if v != new_v:
+#                 print("DETECTING RANDOM MUTATION")
+                has_changed = True 
+            setattr(self, a.name, new_v)
+        if has_changed:
+            self.last_updated_in_generation = puissance_config.current_generation
+            
+    def mutate_puissance(self, config, puissance_config):
+        if not hasattr(self, 'psi'):
+            self.psi = puissance_config.psi_max
+        
+#         if self.psi != puissance_config.psi_max:
+#             print("PSI HAS CHANGED: " + str(self.psi))
+        
+        # print(str(self.psi) + "mutate")
+        for a in self._gene_attributes:
+            v = getattr(self, a.name)
+            setattr(self, a.name, a.mutate_value_puissance(v, config, self.psi, puissance_config ))
+        
+        self.last_updated_in_generation = puissance_config.current_generation
+    
+    def psi_init(self, puissance_config):
+         if not hasattr(self, 'psi'):
+            self.psi = puissance_config.psi_max
+    
     def copy(self):
         new_gene = self.__class__(self.key)
+        new_gene.psi = self.psi
         for a in self._gene_attributes:
             setattr(new_gene, a.name, getattr(self, a.name))
 
@@ -64,12 +100,13 @@ class BaseGene(object):
         # Note: we use "a if random() > 0.5 else b" instead of choice((a, b))
         # here because `choice` is substantially slower.
         new_gene = self.__class__(self.key)
+        
         for a in self._gene_attributes:
             if random() > 0.5:
                 setattr(new_gene, a.name, getattr(self, a.name))
             else:
                 setattr(new_gene, a.name, getattr(gene2, a.name))
-
+        new_gene.psi = self.psi
         return new_gene
 
 

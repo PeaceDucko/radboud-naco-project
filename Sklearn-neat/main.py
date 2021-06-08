@@ -1,3 +1,10 @@
+"""
+============================
+Plotting NEAT Classifier
+============================
+
+An example plot of :class:`neuro_evolution._neat.NEATClassifier`
+"""
 import sys
 import os
 sys.path.append(os.getcwd()+"/Sklearn-neat")
@@ -10,16 +17,14 @@ from neuro_evolution import NEATClassifier
 from tensorflow.keras.datasets import cifar10
 from sklearn.preprocessing import OneHotEncoder
 from tensorflow.keras.utils import to_categorical
-import neat
 import numpy as np
 import cv2
+import sys
 import logging
-from sklearn.model_selection import StratifiedShuffleSplit
 from io import StringIO 
 import re
-import glob
-
 from arg_parse import *
+from sklearn.model_selection import StratifiedShuffleSplit
 
 root = logging.getLogger()
 root.setLevel(logging.DEBUG)
@@ -53,12 +58,12 @@ X = X.astype('float32')
 X /= 255
 
 sss = StratifiedShuffleSplit(n_splits=5, 
-                             test_size=args.test_size, 
-                             train_size=args.train_size, 
+                             train_size=0.015, # 900 train 
+                             test_size=0.003, # 180 test
                              random_state=0)
 
 for train_index, test_index in sss.split(X, y):
-    print("TRAIN:", train_index, "TEST:", test_index)
+    #print("TRAIN:", train_index, "TEST:", test_index)
     X_train, X_test = X[train_index], X[test_index]
     y_train, y_test = y[train_index], y[test_index]
     
@@ -75,8 +80,8 @@ def find_metric_in_output(output, string):
     result = np.array(result).astype('float')
     result = result[0]
     
-    return result    
-
+    return result 
+    
 X_train_fl = X_train.reshape((X_train.shape[0], -1))
 X_test_fl = X_test.reshape((X_test.shape[0], -1))
 

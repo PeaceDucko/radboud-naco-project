@@ -38,12 +38,12 @@ class DefaultReproduction(DefaultClassConfig):
         self.stagnation = stagnation
         self.ancestors = {}
 
-    def create_new(self, genome_type, genome_config, num_genomes):
+    def create_new(self, genome_type, genome_config, num_genomes, puissance_config):
         new_genomes = {}
         for i in range(num_genomes):
             key = next(self.genome_indexer)
             g = genome_type(key)
-            g.configure_new(genome_config)
+            g.configure_new(genome_config, puissance_config)
             new_genomes[key] = g
             self.ancestors[key] = tuple()
 
@@ -81,11 +81,12 @@ class DefaultReproduction(DefaultClassConfig):
 
         return spawn_amounts
 
-    def reproduce(self, config, species, pop_size, generation):
+    def reproduce(self, config, species, pop_size, generation, puissance_config):
         """
         Handles creation of genomes, either from scratch or by sexual or
         asexual reproduction from parents.
         """
+        print("Currently reproducing")
         # TODO: I don't like this modification of the species and stagnation objects,
         # because it requires internal knowledge of the objects.
 
@@ -97,6 +98,7 @@ class DefaultReproduction(DefaultClassConfig):
         all_fitnesses = []
         remaining_species = []
         for stag_sid, stag_s, stagnant in self.stagnation.update(species, generation):
+#             print(stag_sid, stag_s, stagnant)
             if stagnant:
                 self.reporters.species_stagnant(stag_sid, stag_s)
             else:
@@ -136,7 +138,9 @@ class DefaultReproduction(DefaultClassConfig):
         min_species_size = max(min_species_size,self.reproduction_config.elitism)
         spawn_amounts = self.compute_spawn(adjusted_fitnesses, previous_sizes,
                                            pop_size, min_species_size)
-
+        print("Spawns: \n")
+        print(spawn_amounts)
+        
         new_population = {}
         species.species = {}
         for spawn, s in zip(spawn_amounts, remaining_species):
@@ -180,8 +184,8 @@ class DefaultReproduction(DefaultClassConfig):
                 # genetically identical clone of the parent (but with a different ID).
                 gid = next(self.genome_indexer)
                 child = config.genome_type(gid)
-                child.configure_crossover(parent1, parent2, config.genome_config)
-                child.mutate(config.genome_config)
+                child.configure_crossover(parent1, parent2, config.genome_config, puissance_config)
+                child.mutate(config.genome_config, puissance_config)
                 new_population[gid] = child
                 self.ancestors[gid] = (parent1_id, parent2_id)
 

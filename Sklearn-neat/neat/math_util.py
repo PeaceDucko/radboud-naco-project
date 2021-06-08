@@ -6,9 +6,7 @@ from math import sqrt, exp
 
 def mean(values):
     values = list(values)
-    print("Works :)")
     return sum(map(float, values)) / len(values)
-
 
 def median(values):
     values = list(values)
