@@ -6,4 +6,4 @@
 #SBATCH --mail-user=sram@science.ru.nl
 #SBATCH --time=01:00:00
 #
-~/radboud-naco-project/env/bin/python3 ~/radboud-naco-project/Sklearn-neat/main.py --generations=1 --population_size=10 --population_limit=0.1
+~/radboud-naco-project/env/bin/python3 ~/radboud-naco-project/Sklearn-neat/main.py --generations=10 --population_size=15 --population_limit=0.9 --train_size=0.001 --test_size=0.0002
