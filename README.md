@@ -39,7 +39,7 @@ py /Sklearn-neat/main.py
     </td>
     <td align="center"><a href="https://github.com/Ylja07"><img src="https://avatars.githubusercontent.com/u/27802933?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ylja van Son</b>
     </td>
-    <td align="center"><a href="https://github.com/W-M-T"><img src="https://avatars.githubusercontent.com/u/12382856?v=4?s=100" width="100px;" alt=""/><br /><sub><b>W-M-T</b>
+    <td align="center"><a href="https://github.com/W-M-T"><img src="https://avatars.githubusercontent.com/u/12382856?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ward Theunisse</b>
     </td>
   </tr>
 </table>
