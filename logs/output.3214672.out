@@ -1,0 +1,29 @@
+
+
+###############################################################################
+Science Cluster
+Job 3214672 for user 'yvson'
+Finished at: Wed Jun  9 17:37:27 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : yvson
+Partition           : csedu
+Nodes               : cn47
+Cores               : 2
+State               : FAILED
+Submit              : 2021-06-09T11:21:33
+Start               : 2021-06-09T11:21:33
+End                 : 2021-06-09T17:37:26
+Reserved walltime   : 1-08:00:00
+Used walltime       :   06:15:53
+Used CPU time       :   06:15:37 (efficiency: 49.96%)
+% User (Computation): 99.97%
+% System (I/O)      :  0.03%
+Mem reserved        : 2G/core
+Max Mem used        : 1.45G (cn47)
+Max Disk Write      : 0.00  (cn47)
+Max Disk Read       : 1.00M (cn47)
+
