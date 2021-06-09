@@ -73,6 +73,7 @@ class Population(object):
             self.puissance_config.sigma = self.puissance_config.sigma_min
         else:
             self.puissance_config.sigma = self.puissance_config.sigma * 1.05
+        print("Sigma: {}".format(self.puissance_config.sigma))
 
     def update_puissance(self, mu_window_size):
         for g in self.population.values():
@@ -83,7 +84,7 @@ class Population(object):
 
             all_weights = np.array(all_weights)
             unique_psi = set(list(map(lambda x: x.psi, all_weights)))
-            print("Unique puissance values: {}".format(unique_psi))
+            
             
     def run(self, fitness_function, n=None):
         """
@@ -176,6 +177,8 @@ class Population(object):
 
             self.reporters.end_generation(self.config, self.population, self.species)
 
+            
+            
             self.generation += 1
 
         if self.config.no_fitness_termination:

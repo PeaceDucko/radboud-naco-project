@@ -1,0 +1,33 @@
+  File "/home/sram/radboud-naco-project/Sklearn-neat/main.py", line 56
+    output_folder = "outputs/output_"+time+"/
+                                            ^
+SyntaxError: EOL while scanning string literal
+
+
+###############################################################################
+Science Cluster
+Job 3214945 for user 'sram'
+Finished at: Wed Jun  9 21:38:16 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn47
+Cores               : 2
+State               : FAILED
+Submit              : 2021-06-09T21:38:15
+Start               : 2021-06-09T21:38:15
+End                 : 2021-06-09T21:38:16
+Reserved walltime   : 1-12:00:00
+Used walltime       :   00:00:01
+Used CPU time       : --
+% User (Computation): 81.82%
+% System (I/O)      : 18.18%
+Mem reserved        : 2G/core
+Max Mem used        : 0.00  (cn47)
+Max Disk Write      : 0.00  (cn47)
+Max Disk Read       : 0.00  (cn47)
+
