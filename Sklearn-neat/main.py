@@ -19,6 +19,7 @@ from arg_parse import *
 from sklearn.model_selection import StratifiedShuffleSplit
 import seaborn as sns
 import contextlib
+import datetime
 
 logging.getLogger('matplotlib.font_manager').disabled = True
 
@@ -26,16 +27,11 @@ import seaborn as sns
 
 sns.set_style('whitegrid')
 
-fig_loc = "figures/part2/"
-output_loc = "output/"
-
-"""
-Packages for custom NEAT implementation
-"""
 sys.path.append(os.getcwd()+"/Sklearn-neat")
 
 import neat
 from neat import math_util
+from neat.puissance import Puissance 
 
 from neuro_evolution import NEATClassifier
 
@@ -53,6 +49,36 @@ root.addHandler(handler)
 """
 End
 """
+
+now = datetime.datetime.now() # current date and time
+time = now.strftime("%d.%m_%H.%M")
+
+output_folder = "outputs/output_"+time+"/"
+
+fig_loc = "figures/"
+
+if not os.path.exists(output_folder):
+    os.makedirs(output_folder)
+    
+os.chdir(output_folder)
+    
+print("Current working directory: {}".format(os.getcwd()))
+
+logfile = open('output.txt', 'w')
+
+original_stderr = sys.stderr
+original_stdout = sys.stdout
+
+class Tee(object):
+    def __init__(self, *files):
+        self.files = files
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush() # If you want the output to be visible immediately
+    def flush(self) :
+        for f in self.files:
+            f.flush()
 
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
@@ -120,10 +146,14 @@ except:
 """
 Training the NEAT model
 """
-path = output_loc+'output.txt'
-with open(path, 'w') as f:
-    with contextlib.redirect_stdout(f):
-        neat_genome = clf.fit(X_train_fl, y_train.ravel())
+sys.stdout = Tee(sys.stdout, logfile)
+sys.stderr = sys.stdout
+    
+neat_genome = clf.fit(X_train_fl, y_train.ravel())
+
+sys.stdout = original_stdout
+sys.stderr = original_stderr
+logfile.close()
     
 y_pred = neat_genome.predict(X_test_fl)
     

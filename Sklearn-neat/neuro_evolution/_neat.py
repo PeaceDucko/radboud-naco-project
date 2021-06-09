@@ -14,6 +14,8 @@ from ._config import NEATConfig, ConfigParser, GenomeConfig, ReproductionConfig,
 import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
+import os
+import contextlib
 
 
 def softmax(x):
@@ -253,6 +255,8 @@ class NEATClassifier(BaseNEAT, ClassifierMixin):
                  create_checkpoints=0,
                  checkpoint_frequency=20,
                  puissance_config = None):
+        
+        
         super().__init__(number_of_generations=number_of_generations,
                          fitness_criterion=fitness_criterion,
                          fitness_threshold=fitness_threshold,

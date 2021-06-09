@@ -1,0 +1,41 @@
+2021-06-09 21:35:53.771178: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+Current working directory: /home/sram/outputs/output_09.06_21.35
+(600, 32, 32, 3)
+(600, 1)
+---
+(300, 32, 32, 3)
+(300, 1)
+2021-06-09 21:35:59,418 - root - INFO - Running NEAT puissance
+
+ ****** Running generation 0 ****** 
+
+slurmstepd: error: *** JOB 3214944 ON cn47 CANCELLED AT 2021-06-09T21:37:47 ***
+
+
+###############################################################################
+Science Cluster
+Job 3214944 for user 'sram'
+Finished at: Wed Jun  9 21:37:51 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn47
+Cores               : 2
+State               : CANCELLED,CANCELLED by 37218
+Submit              : 2021-06-09T21:35:50
+Start               : 2021-06-09T21:35:51
+End                 : 2021-06-09T21:37:50
+Reserved walltime   : 1-12:00:00
+Used walltime       :   00:01:59
+Used CPU time       :   00:00:57 (efficiency: 23.96%)
+% User (Computation): 98.25%
+% System (I/O)      :  1.75%
+Mem reserved        : 2G/core
+Max Mem used        : 1.26G (cn47)
+Max Disk Write      : 0.00  (cn47)
+Max Disk Read       : 1003.52K (cn47)
+

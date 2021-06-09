@@ -1,0 +1,11 @@
+2021-06-09 21:39:28.984231: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+Current working directory: /home/sram/radboud-naco-project/outputs/output_09.06_21.39
+(600, 32, 32, 3)
+(600, 1)
+---
+(300, 32, 32, 3)
+(300, 1)
+2021-06-09 21:39:34,877 - root - INFO - Running NEAT puissance
+
+ ****** Running generation 0 ****** 
+
