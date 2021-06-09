@@ -73,6 +73,7 @@ class Population(object):
             self.puissance_config.sigma = self.puissance_config.sigma_min
         else:
             self.puissance_config.sigma = self.puissance_config.sigma * 1.05
+        print("Sigma: {}".format(self.puissance_config.sigma))
 
     def update_puissance(self, mu_window_size):
         for g in self.population.values():
