@@ -1,0 +1,79 @@
+2021-06-09 09:40:49.227860: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+(600, 32, 32, 3)
+(600, 1)
+---
+(300, 32, 32, 3)
+(300, 1)
+2021-06-09 09:41:03,839 - root - INFO - Running NEAT puissance
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+              precision    recall  f1-score   support
+
+           0       0.11      0.67      0.19        30
+           1       0.13      0.50      0.20        30
+           2       0.00      0.00      0.00        30
+           3       0.00      0.00      0.00        30
+           4       0.00      0.00      0.00        30
+           5       0.00      0.00      0.00        30
+           6       0.00      0.00      0.00        30
+           7       0.00      0.00      0.00        30
+           8       0.00      0.00      0.00        30
+           9       1.00      0.03      0.06        30
+
+    accuracy                           0.12       300
+   macro avg       0.12      0.12      0.05       300
+weighted avg       0.12      0.12      0.05       300
+
+Traceback (most recent call last):
+  File "/home/sram/radboud-naco-project/Sklearn-neat/main.py", line 205, in <module>
+    plot_results(plots, "Generation", "Fitness", "fitness.png")
+  File "/home/sram/radboud-naco-project/Sklearn-neat/main.py", line 177, in plot_results
+    plt.savefig(fig_loc+fig_name)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/matplotlib/pyplot.py", line 859, in savefig
+    res = fig.savefig(*args, **kwargs)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/matplotlib/figure.py", line 2311, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/matplotlib/backend_bases.py", line 2217, in print_figure
+    **kwargs)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/matplotlib/backend_bases.py", line 1639, in wrapper
+    return func(*args, **kwargs)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/matplotlib/backends/backend_agg.py", line 512, in print_png
+    dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/matplotlib/image.py", line 1611, in imsave
+    image.save(fname, **pil_kwargs)
+  File "/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/PIL/Image.py", line 2169, in save
+    fp = builtins.open(filename, "w+b")
+FileNotFoundError: [Errno 2] No such file or directory: 'figures/part2/fitness.png'
+
+
+###############################################################################
+Science Cluster
+Job 3214506 for user 'sram'
+Finished at: Wed Jun  9 10:06:47 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn48
+Cores               : 2
+State               : FAILED
+Submit              : 2021-06-09T09:40:43
+Start               : 2021-06-09T09:40:44
+End                 : 2021-06-09T10:06:46
+Reserved walltime   : 1-12:00:00
+Used walltime       :   00:26:02
+Used CPU time       :   00:25:49 (efficiency: 49.61%)
+% User (Computation): 99.84%
+% System (I/O)      :  0.16%
+Mem reserved        : 2G/core
+Max Mem used        : 1.36G (cn48)
+Max Disk Write      : 0.00  (cn48)
+Max Disk Read       : 1003.52K (cn48)
+

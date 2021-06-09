@@ -1,0 +1,40 @@
+2021-06-09 09:38:58.131292: I tensorflow/stream_executor/platform/default/dso_loader.cc:53] Successfully opened dynamic library libcudart.so.11.0
+(600, 32, 32, 3)
+(600, 1)
+---
+(300, 32, 32, 3)
+(300, 1)
+2021-06-09 09:39:12,986 - root - INFO - Running NEAT puissance
+Traceback (most recent call last):
+  File "/home/sram/radboud-naco-project/Sklearn-neat/main.py", line 124, in <module>
+    with open(path, 'w') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'output/output.txt'
+
+
+###############################################################################
+Science Cluster
+Job 3214505 for user 'sram'
+Finished at: Wed Jun  9 09:39:16 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn48
+Cores               : 2
+State               : FAILED
+Submit              : 2021-06-09T09:38:52
+Start               : 2021-06-09T09:38:53
+End                 : 2021-06-09T09:39:15
+Reserved walltime   : 1-12:00:00
+Used walltime       :   00:00:22
+Used CPU time       :   00:00:08 (efficiency: 19.39%)
+% User (Computation): 75.75%
+% System (I/O)      : 24.25%
+Mem reserved        : 2G/core
+Max Mem used        : 0.00  (cn48)
+Max Disk Write      : 0.00  (cn48)
+Max Disk Read       : 0.00  (cn48)
+

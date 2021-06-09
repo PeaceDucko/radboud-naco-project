@@ -26,7 +26,8 @@ import seaborn as sns
 
 sns.set_style('whitegrid')
 
-fig_loc = "figures/"
+fig_loc = "figures/part2/"
+output_loc = "output/"
 
 """
 Packages for custom NEAT implementation
@@ -119,7 +120,7 @@ except:
 """
 Training the NEAT model
 """
-path = 'output.txt'
+path = output_loc+'output.txt'
 with open(path, 'w') as f:
     with contextlib.redirect_stdout(f):
         neat_genome = clf.fit(X_train_fl, y_train.ravel())
@@ -131,7 +132,7 @@ print(classification_report(y_test.ravel(), y_pred.ravel()))
 """
 Reading the output and processing results
 """
-output = open("output.txt", "r").read()
+output = open(output_loc+'output.txt', "r").read()
 
 gen_time = find_metric_in_output(output, "Generation time:")
 cum_gen_time = np.array([])
