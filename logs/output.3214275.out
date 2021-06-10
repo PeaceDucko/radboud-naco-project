@@ -5,3 +5,55 @@
 (300, 32, 32, 3)
 (300, 1)
 2021-06-08 23:28:08,764 - root - INFO - Running NEAT puissance
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/sram/radboud-naco-project/env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1248: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+              precision    recall  f1-score   support
+
+           0       0.20      0.67      0.31        30
+           1       0.10      0.13      0.11        30
+           2       0.13      0.43      0.20        30
+           3       0.15      0.10      0.12        30
+           4       0.09      0.07      0.08        30
+           5       0.15      0.10      0.12        30
+           6       0.00      0.00      0.00        30
+           7       0.00      0.00      0.00        30
+           8       0.00      0.00      0.00        30
+           9       0.00      0.00      0.00        30
+
+    accuracy                           0.15       300
+   macro avg       0.08      0.15      0.09       300
+weighted avg       0.08      0.15      0.09       300
+
+
+
+###############################################################################
+Science Cluster
+Job 3214275 for user 'sram'
+Finished at: Thu Jun 10 01:30:07 CEST 2021
+
+Job details:
+============
+
+Name                : main.sh
+User                : sram
+Partition           : csedu
+Nodes               : cn47
+Cores               : 2
+State               : COMPLETED
+Submit              : 2021-06-08T22:48:45
+Start               : 2021-06-08T23:27:22
+End                 : 2021-06-10T01:30:06
+Reserved walltime   : 1-12:00:00
+Used walltime       : 1-02:02:44
+Used CPU time       : 1-02:02:04 (efficiency: 49.98%)
+% User (Computation): 99.93%
+% System (I/O)      :  0.07%
+Mem reserved        : 2G/core
+Max Mem used        : 2.55G (cn47)
+Max Disk Write      : 0.00  (cn47)
+Max Disk Read       : 1003.52K (cn47)
+

@@ -27,14 +27,6 @@ import seaborn as sns
 
 sns.set_style('whitegrid')
 
-sys.path.append(os.getcwd()+"/Sklearn-neat")
-
-import neat
-from neat import math_util
-from neat.puissance import Puissance 
-
-from neuro_evolution import NEATClassifier
-
 """
 Custom logging
 """
@@ -50,6 +42,27 @@ root.addHandler(handler)
 End
 """
 
+logging.info("Generations: "+str(args.generations))
+logging.info("Population size: "+str(args.population_size))
+logging.info("Fitness limit: "+str(args.fitness_limit))
+logging.info("Train size: "+str(args.train_size))
+logging.info("Test size: "+str(args.test_size))
+
+sys.path.append(os.getcwd()+"/Sklearn-neat")
+
+import neat
+from neat import math_util
+
+using_neat = False
+try:
+    from neat.puissance import Puissance
+    logging.info("Running NEAT puissance")
+    using_neat = True
+except:
+    logging.info("Running standard NEAT")
+
+from neuro_evolution import NEATClassifier
+
 now = datetime.datetime.now() # current date and time
 time = now.strftime("%d.%m_%H.%M")
 
@@ -61,6 +74,9 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
     
 os.chdir(output_folder)
+
+if not os.path.exists(fig_loc):
+    os.makedirs(fig_loc)
     
 print("Current working directory: {}".format(os.getcwd()))
 
@@ -124,24 +140,17 @@ def find_puissance_in_output(output):
 X_train_fl = X_train.reshape((X_train.shape[0], -1))
 X_test_fl = X_test.reshape((X_test.shape[0], -1))
 
-try:
-    from neat.puissance import Puissance
-
+if using_neat:
     puissance_config = Puissance()
 
     clf = NEATClassifier(number_of_generations=args.generations,
                          fitness_threshold=args.fitness_limit,
                          pop_size=args.population_size,
-                         puissance_config = puissance_config)
-    
-    logging.info("Running NEAT puissance")
-    
-except:
+                         puissance_config = puissance_config)    
+else:
     clf = NEATClassifier(number_of_generations=args.generations,
                          fitness_threshold=args.fitness_limit,
                          pop_size=args.population_size)
-    
-    logging.info("Running NEAT")
     
 """
 Training the NEAT model
@@ -162,7 +171,7 @@ print(classification_report(y_test.ravel(), y_pred.ravel()))
 """
 Reading the output and processing results
 """
-output = open(output_loc+'output.txt', "r").read()
+output = open('output.txt', "r").read()
 
 gen_time = find_metric_in_output(output, "Generation time:")
 cum_gen_time = np.array([])
@@ -178,6 +187,9 @@ results['pop_avg_fitness'] = find_metric_in_output(output, "Population's average
 results['gen_time'] = gen_time
 results['cum_gen_time'] = cum_gen_time
 results['stdev'] = find_metric_in_output(output, "stdev:")
+
+if using_neat:
+    results['sigma'] = find_metric_in_output(output, "Sigma:")
 # metrics['puissance'] = puissance = find_puissance_in_output(output)
 
 assert len(results['best_fitness']) == \
@@ -272,3 +284,14 @@ plots[0] = {
 }
 
 plot_results(plots, "Generation", "Cumulative generation time (seconds)", "cum_gen_time.png")
+
+if using_neat:
+    plots = {}
+
+    plots[0] = {
+        "x":np.linspace(0,args.generations,args.generations),
+        "y":results['sigma'],
+        "label":"Sigma"
+    }
+
+    plot_results(plots, "Generation", "Sigma", "sigma.png")    
