@@ -1,6 +1,6 @@
-# radboud-naco-project
+# Image Classification with Puissance-assisted Neuroevolution
 
-radboud naco project is a Natural computing project made by students of Radboud University.  
+"Image Classification with Puissance-assisted Neuroevolution" is a Natural computing project made by students of Radboud University.  
 This project applies Mutational Puissance Assisted Neuroevolution to NEAT. 
 
 
@@ -8,9 +8,16 @@ This project applies Mutational Puissance Assisted Neuroevolution to NEAT.
 The code on this repository was tested on Python 3.6.9.
 
 <br>
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies for this project.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies for this project from the root folder.
 
 ```bash
+pip install -r requirements.txt
+```
+
+Optionally, you could create a virtual environment using the Python virtualenv package by running
+```bash
+virtualenv <env_name>
+source <env_name>/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -25,7 +32,7 @@ To run the normal Sklearn-neuroevolution on the CIFAR-10 dataset.
 mv ./Sklearn-neat/neat /Sklearn-neat/temp-neat
 python ./Sklearn-neat/main.py
 ```
-Changing the directory name for neat will ensure that Sklearn-neuroevolution will import neat normally instead of using the locally modified version that should be used in the example below.
+changing the directory name for neat will ensure that Sklearn-neuroevolution will import neat normally instead of using the locally modified version that should be used in th example below.
 
 <br>
 To run Sklearn-neuroevolution with Mutational Puissance on the CIFAR-10 dataset.
