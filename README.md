@@ -41,7 +41,7 @@ To run Sklearn-neuroevolution with Mutational Puissance on the CIFAR-10 dataset.
 python ./Sklearn-neat/main.py
 ```
 
-## Contribors
+## Contributors
 <table>
   <tr>
     <td align="center"><a href="https://github.com/PeaceDucko"><img src="https://avatars.githubusercontent.com/u/36194484?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sebastiaan Ram</b>
