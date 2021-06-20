@@ -25,7 +25,7 @@ To run the normal Sklearn-neuroevolution on the CIFAR-10 dataset.
 mv ./Sklearn-neat/neat /Sklearn-neat/temp-neat
 python ./Sklearn-neat/main.py
 ```
-changing the directory name for neat will ensure that Sklearn-neuroevolution will import neat normally instead of using the locally modified version that should be used in th example below.
+Changing the directory name for neat will ensure that Sklearn-neuroevolution will import neat normally instead of using the locally modified version that should be used in the example below.
 
 <br>
 To run Sklearn-neuroevolution with Mutational Puissance on the CIFAR-10 dataset.
