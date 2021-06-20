@@ -1,11 +1,13 @@
 # radboud-naco-project
 
-radboud naco project is a Natural computing project made by students of Rabdoub University.  
+radboud naco project is a Natural computing project made by students of Radboud University.  
 This project applies Mutational Puissance Assisted Neuroevolution to NEAT. 
 
 
 ## Installation
+The code on this repository was tested on Python 3.6.9.
 
+<br>
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies for this project.
 
 ```bash
@@ -20,8 +22,8 @@ There are 2 ways this project can be ran:
 
 To run the normal Sklearn-neuroevolution on the CIFAR-10 dataset.
 ```bash
-mv /Sklearn-neat/neat /Sklearn-neat/temp-neat
-py /Sklearn-neat/main.py
+mv ./Sklearn-neat/neat /Sklearn-neat/temp-neat
+python ./Sklearn-neat/main.py
 ```
 changing the directory name for neat will ensure that Sklearn-neuroevolution will import neat normally instead of using the locally modified version that should be used in th example below.
 
@@ -29,7 +31,7 @@ changing the directory name for neat will ensure that Sklearn-neuroevolution wil
 To run Sklearn-neuroevolution with Mutational Puissance on the CIFAR-10 dataset.
 
 ```bash
-py /Sklearn-neat/main.py
+python ./Sklearn-neat/main.py
 ```
 
 ## Contribors
