@@ -7,7 +7,6 @@ This project applies Mutational Puissance Assisted Neuroevolution to NEAT.
 ## Installation
 The code on this repository was tested on Python 3.6.9.
 
-<br>
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the dependencies for this project from the root folder.
 
 ```bash
@@ -34,7 +33,6 @@ python ./Sklearn-neat/main.py
 ```
 changing the directory name for neat will ensure that Sklearn-neuroevolution will import neat normally instead of using the locally modified version that should be used in th example below.
 
-<br>
 To run Sklearn-neuroevolution with Mutational Puissance on the CIFAR-10 dataset.
 
 ```bash
